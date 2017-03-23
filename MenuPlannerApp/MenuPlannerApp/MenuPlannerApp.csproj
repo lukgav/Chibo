@@ -8,7 +8,7 @@
     <ProjectGuid>{A7736A0B-C873-454A-9962-CC509D83874E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MenuPlannerApp</RootNamespace>
+    <RootNamespace>MenuPlanner</RootNamespace>
     <AssemblyName>MenuPlannerApp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -41,6 +41,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Menus
+namespace MenuPlanner.Models
 {
 	public class Recipe
 	{
