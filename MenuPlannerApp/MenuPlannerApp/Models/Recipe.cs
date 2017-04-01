@@ -63,7 +63,7 @@ namespace MenuPlanner.Models
 
 		public Recipe(string name, string[] instruction, string[] tag)
 		{
-			_ingredients = new ListIngredients();
+			ListIngredients _ingredients = new ListIngredients();
 
 			_name = name;
 
