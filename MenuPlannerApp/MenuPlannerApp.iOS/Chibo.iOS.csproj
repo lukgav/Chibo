@@ -138,9 +138,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MenuPlannerApp\MenuPlannerApp.csproj">
-      <Project>{67eaa273-8853-4114-acc4-968c41eec986}</Project>
-      <Name>MenuPlannerApp</Name>
+    <ProjectReference Include="..\MenuPlannerApp\Chibo.csproj">
+      <Project>{A7736A0B-C873-454A-9962-CC509D83874E}</Project>
+      <Name>Chibo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using MenuPlanner.Models;
+using Chibo.Models;
 
-namespace MenuPlanner.UnitTesting
+namespace Chibo.UnitTesting
 {
     [TestFixture]
     public class TestsSample

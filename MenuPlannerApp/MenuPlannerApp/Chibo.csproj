@@ -8,8 +8,8 @@
     <ProjectGuid>{A7736A0B-C873-454A-9962-CC509D83874E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MenuPlanner</RootNamespace>
-    <AssemblyName>MenuPlannerApp</AssemblyName>
+    <RootNamespace>Chibo</RootNamespace>
+    <AssemblyName>Chibo</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>

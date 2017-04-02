@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace MenuPlannerApp.iOS
+namespace Chibo.iOS
 {
     public class Application
     {

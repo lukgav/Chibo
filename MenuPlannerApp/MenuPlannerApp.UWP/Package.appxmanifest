@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="3284226a-d97b-4799-bf95-4973b953ecc4" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>MenuPlannerApp.UWP</DisplayName>
+    <DisplayName>Chibo.UWP</DisplayName>
     <PublisherDisplayName>Mitchell</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="MenuPlannerApp.UWP.App">
+      EntryPoint="Chibo.UWP.App">
       <uap:VisualElements
-        DisplayName="MenuPlannerApp.UWP"
+        DisplayName="Chibo.UWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="MenuPlannerApp.UWP"
+        Description="Chibo.UWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

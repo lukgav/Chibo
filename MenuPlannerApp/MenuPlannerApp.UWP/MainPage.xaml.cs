@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MenuPlannerApp.UWP
+namespace Chibo.UWP
 {
     public sealed partial class MainPage
     {
@@ -21,7 +21,7 @@ namespace MenuPlannerApp.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new MenuPlannerApp.App());
+            LoadApplication(new Chibo.App());
         }
     }
 }

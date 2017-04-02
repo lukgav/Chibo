@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MenuPlannerApp.Droid</RootNamespace>
-    <AssemblyName>MenuPlannerApp.Android</AssemblyName>
+    <RootNamespace>Chibo.Droid</RootNamespace>
+    <AssemblyName>Chibo.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -124,9 +124,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MenuPlannerApp\MenuPlannerApp.csproj">
-      <Project>{67eaa273-8853-4114-acc4-968c41eec986}</Project>
-      <Name>MenuPlannerApp</Name>
+    <ProjectReference Include="..\MenuPlannerApp\Chibo.csproj">
+      <Project>{A7736A0B-C873-454A-9962-CC509D83874E}</Project>
+      <Name>Chibo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

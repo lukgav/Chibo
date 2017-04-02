@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MenuPlanner.Models
+namespace Chibo.Models
 {
     public class Ingredient
     {

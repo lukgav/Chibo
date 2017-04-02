@@ -5,7 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 
-namespace MenuPlannerApp
+namespace Chibo
 {
     public partial class App : Application
     {
@@ -13,7 +13,7 @@ namespace MenuPlannerApp
         {
             InitializeComponent();
 
-            MainPage = new MenuPlannerApp.MainPage();
+            MainPage = new Chibo.MainPage();
         }
 
         protected override void OnStart()
