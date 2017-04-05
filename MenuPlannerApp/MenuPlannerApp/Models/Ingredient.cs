@@ -11,6 +11,13 @@ namespace Chibo.Models
         private float ingCaloriesPerGram;
         private int num;
 
+        //public string ingName { get; }
+        //public string ingDescrip { get; }
+
+        //public float ingMass { get; }
+
+        //public float IngCaloriesPerGram { get; }
+
         public Ingredient()
         {
             ingName = "potatoe"; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
@@ -58,12 +65,5 @@ namespace Chibo.Models
                 return IngCaloriesPerGram;
             }
         }
-
-        //public string ingName { get; }
-        //public string ingDescrip { get; }
-
-        //public float ingMass { get; }
-
-        //public float IngCaloriesPerGram { get; }
     }
 }
