@@ -21,11 +21,19 @@ namespace Chibo.Models
             ingNum = 0;
         }
 
+
+        //JED A. I added this overload to allow simpler functionality
+        public ListIngredients Merge(ListIngredients ls)
+        {
+           return this.Merge(ls.Ingredients);
+        }
+
         public ListIngredients Merge(List<Ingredient> ingListFrom)
         {
             bool hasCheck = false;
             ListIngredients lIngreds = new ListIngredients(ingredients);
 
+            //JED Q. shouldn't ListIngredients have an add function which does this check?
             foreach (Ingredient newIng in ingListFrom)
             {
                 foreach (Ingredient thisIng in Ingredients)
@@ -39,11 +47,15 @@ namespace Chibo.Models
                 {
                     ingNum++;
                 }
+
+                //JED Q. Shouldn't the ListIngredients record the amount of each Ingredient?
+                //JED Q. shouldn't ListIngredients have an add function which only adds a new entry to ingredients if a copy doesn't already exist?
                 lIngreds.Ingredients.Add(newIng);
                hasCheck = false;
             }
             return lIngreds;
         }
+
         public List<Ingredient> Ingredients{get; set;}
         public uint IngNum {get; set;}
     }

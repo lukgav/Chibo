@@ -58,7 +58,13 @@ namespace Chibo.Models
 
 		public ListIngredients Ingredients
 		{ 
-			get { return _ingredients;}
+            // The ListIngredients type should provide functionality to manipulate itself
+            // New ListIngredients never need to be assigned
+			get
+            {
+                return _ingredients;
+            }
+
 		}
 
 		public Recipe(string name, string[] instruction, string[] tag)
@@ -71,5 +77,15 @@ namespace Chibo.Models
 
 			_tag = tag;
 		}
+
+        public void Add(Ingredient toAdd, /*AMOUNT*/)
+        {
+            _ingredients.Add(toAdd);
+        }
+
+        public void Remove(Ingredient toRemove, /*AMOUNT*/)
+        {
+            _ingredients.Remove(toRemove);
+        }
 	}
 }
