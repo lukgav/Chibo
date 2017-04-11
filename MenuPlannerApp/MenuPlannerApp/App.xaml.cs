@@ -13,7 +13,7 @@ namespace Chibo
         {
             InitializeComponent();
 
-            MainPage = new Chibo.MainPage();
+            MainPage = new Chibo.Main();
         }
 
         protected override void OnStart()

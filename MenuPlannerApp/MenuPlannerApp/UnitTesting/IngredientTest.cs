@@ -8,11 +8,11 @@ namespace Chibo.UnitTesting
     [TestFixture]
     public class IngredientTest
     {
-        Ingredient ingredient;
+        Models.Ingredient ingredient;
         [SetUp]
         public void init()
         {
-            ingredient = new Ingredient();
+            ingredient = new Models.Ingredient();
         }
         
         [Test]

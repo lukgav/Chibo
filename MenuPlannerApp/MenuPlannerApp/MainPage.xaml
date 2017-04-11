@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:Chibo"
              x:Class="Chibo.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Grid HeightRequest="50" BackgroundColor="Blue">
+        
+    </Grid>
 
 </ContentPage>
