@@ -5,53 +5,68 @@ namespace Chibo.Models
 {
     public class ListIngredients
     {
-        private List<Ingredient> ingredients;
-        private uint ingNum;
-        private Ingredient ingred;
-        
+        private List<Ingredient> _ingredients;
+
+        public List<Ingredient> Ingredients
+        {
+            get
+            {
+                return _ingredients;
+            }
+
+            set
+            {
+                _ingredients = value;
+            }
+        }
+        public uint NumberOfIngredients
+        {
+            get
+            {
+                return Convert.ToUInt32(_ingredients.Count);
+            }
+        }
+
         public ListIngredients()
         {
-            ingredients = new List<Ingredient>();
-            ingNum = 0;
+            _ingredients = new List<Ingredient>();
         }
 
-        public ListIngredients(List<Ingredient> _ingredients)
+        public ListIngredients(List<Ingredient> ingredients)
         {
-            ingredients = _ingredients;
-            ingNum = 0;
+            _ingredients = ingredients;
         }
 
-        public ListIngredients Merge(ListIngredients ls)
+        public void Merge(ListIngredients ls)
         {
-           return this.Merge(ls.Ingredients);
+           this.Merge(ls.Ingredients);
         }
 
-        public ListIngredients Merge(List<Ingredient> ingListFrom)
+        public void Merge(List<Ingredient> ingListFrom)
         {
-            bool hasCheck = false;
-            ListIngredients lIngreds = new ListIngredients(ingredients);
+            ListIngredients lIngreds = new ListIngredients(_ingredients);
 
             foreach (Ingredient newIng in ingListFrom)
             {
+                bool hasCheck = false;
+
                 foreach (Ingredient thisIng in Ingredients)
                 {
-                    if(thisIng.Equals(newIng))
+                    if(thisIng.Name == newIng.Name)
                     {
                         hasCheck = true;
+
+                        thisIng.NumberOfIngredients += newIng.NumberOfIngredients;
+
+                        break;
                     }       
                 }
-                if (hasCheck == true)
+
+                if (hasCheck != true)
                 {
-                    ingNum++;
+                    _ingredients.Add(newIng);
                 }
-
-                lIngreds.Ingredients.Add(newIng);
-               hasCheck = false;
             }
-            return lIngreds;
         }
-
-        public List<Ingredient> Ingredients{get; set;}
-        public uint IngNum {get; set;}
     }
 }
