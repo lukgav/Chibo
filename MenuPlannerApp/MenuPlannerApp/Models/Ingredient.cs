@@ -5,65 +5,65 @@ namespace Chibo.Models
 {
     public class Ingredient
     {
-        private string ingName;
-        private string ingDescrip;
-        private float ingMass;
-        private float ingCaloriesPerGram;
-        private int num;
+        private string _name;//Identifier
+        private string _descrip;
+        private float _mass;
+        private float _caloriesPerGram;
+        private int _numberOfIngredients;
 
-        //public string ingName { get; }
-        //public string ingDescrip { get; }
-
-        //public float ingMass { get; }
-
-        //public float IngCaloriesPerGram { get; }
-
-        public Ingredient()
-        {
-            ingName = "potatoe"; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
-            ingDescrip = "Known as 'apple of the earth' in French it is an earthy vegetable found in the ground. Considered healthy although its calorie content is rather high for ever gram.";
-            ingMass = 300.3F; // Is defult mass in micrograms, grams or kg?
-            ingCaloriesPerGram = 20; //shot in the dark. Research can be done later on specific informaton.
-        }
-
-        public Ingredient(string _ingName, string _ingDescrip, float ingMass,float _ingCaloriesPerGram)
-        {
-            ingName = _ingName; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
-            ingDescrip = _ingDescrip;
-            ingMass = ingMass; // Is defult mass in micrograms, grams or kg?
-            ingCaloriesPerGram = _ingCaloriesPerGram; //shot in the dark. Research can be done later on specific informaton.
-        }
-
-        public string IngName
+        public string Name
         {
             get
             {
-                return ingName;
-            } 
-        }
-
-        public string IngDescrip
-        {
-            get
-            {
-                return ingDescrip;
+                return _name;
             }
         }
 
-        public float IngMass
+        public string Descrip
         {
             get
             {
-                return ingMass;
+                return _descrip;
             }
         }
 
-        public float IngCaloriesPerGram
+        public float Mass
         {
             get
             {
-                return IngCaloriesPerGram;
+                return _mass;
             }
+        }
+
+        public float CaloriesPerGram
+        {
+            get
+            {
+                return _caloriesPerGram;
+            }
+        }
+
+        public int NumberOfIngredients
+        {
+            get
+            {
+                return _numberOfIngredients;
+            }
+
+            set
+            {
+                _numberOfIngredients = value;
+            }
+        }
+
+        public Ingredient(string name, string descrip, float mass,float caloriesPerGram)
+        {
+            _name = name; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
+            _descrip = descrip;
+            _mass = mass; // Is defult mass in micrograms, grams or kg?
+            _caloriesPerGram = caloriesPerGram; //shot in the dark. Research can be done later on specific informaton.
+
+            _numberOfIngredients = 0;//default sanity check
         }
     }
 }
