@@ -19,11 +19,11 @@ namespace Chibo.Models
                 _ingredients = value;
             }
         }
-        public uint NumberOfIngredients
+        public int NumberOfIngredients
         {
             get
             {
-                return Convert.ToUInt32(_ingredients.Count);
+                return _ingredients.Count;
             }
         }
 

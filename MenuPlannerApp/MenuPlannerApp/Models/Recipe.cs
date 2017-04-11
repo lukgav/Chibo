@@ -69,7 +69,7 @@ namespace Chibo.Models
 
 		public Recipe(string name, string[] instruction, string[] tag)
 		{
-			ListIngredients _ingredients = new ListIngredients();
+			_ingredients = new ListIngredients();
 
 			_name = name;
 
@@ -80,11 +80,13 @@ namespace Chibo.Models
 
         public void Add(Ingredient toAdd)
         {
+            throw new NotImplementedException("Waiting for ListIngredient update");
             //_ingredients.Add(toAdd);
         }
 
         public void Remove(Ingredient toRemove)
         {
+            throw new NotImplementedException("Waiting for ListIngredient update");
             //_ingredients.Remove(toRemove);
         }
 	}
