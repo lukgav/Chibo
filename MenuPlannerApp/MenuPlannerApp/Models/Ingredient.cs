@@ -5,11 +5,11 @@ namespace Chibo.Models
 {
     public class Ingredient
     {
-        private string ingName;
-        private string ingDescrip;
-        private float ingMass;
-        private float ingCaloriesPerGram;
-        private int num;
+        private string _name;
+        private string _descrip;
+        private float _mass;
+        private float _caloriesPerGram;
+        private int _num;
 
         //public string ingName { get; }
         //public string ingDescrip { get; }
@@ -18,51 +18,43 @@ namespace Chibo.Models
 
         //public float IngCaloriesPerGram { get; }
 
-        public Ingredient()
+        public Ingredient(string name, string descrip, float mass,float caloriesPerGram)
         {
-            ingName = "potatoe"; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
-            ingDescrip = "Known as 'apple of the earth' in French it is an earthy vegetable found in the ground. Considered healthy although its calorie content is rather high for ever gram.";
-            ingMass = 300.3F; // Is defult mass in micrograms, grams or kg?
-            ingCaloriesPerGram = 20; //shot in the dark. Research can be done later on specific informaton.
+            _name = name; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
+            _descrip = descrip;
+            _mass = mass; // Is defult mass in micrograms, grams or kg?
+            _caloriesPerGram = caloriesPerGram; //shot in the dark. Research can be done later on specific informaton.
         }
 
-        public Ingredient(string _ingName, string _ingDescrip, float ingMass,float _ingCaloriesPerGram)
-        {
-            ingName = _ingName; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
-            ingDescrip = _ingDescrip;
-            ingMass = ingMass; // Is defult mass in micrograms, grams or kg?
-            ingCaloriesPerGram = _ingCaloriesPerGram; //shot in the dark. Research can be done later on specific informaton.
-        }
-
-        public string IngName
+        public string Name
         {
             get
             {
-                return ingName;
+                return _name;
             } 
         }
 
-        public string IngDescrip
+        public string Descrip
         {
             get
             {
-                return ingDescrip;
+                return _descrip;
             }
         }
 
-        public float IngMass
+        public float Mass
         {
             get
             {
-                return ingMass;
+                return _mass;
             }
         }
 
-        public float IngCaloriesPerGram
+        public float CaloriesPerGram
         {
             get
             {
-                return IngCaloriesPerGram;
+                return _caloriesPerGram;
             }
         }
     }

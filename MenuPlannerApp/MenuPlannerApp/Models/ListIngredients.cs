@@ -11,7 +11,7 @@ namespace Chibo.Models
         
         public ListIngredients()
         {
-            ingredients = null;
+            ingredients = new List<Ingredient>();
             ingNum = 0;
         }
 
