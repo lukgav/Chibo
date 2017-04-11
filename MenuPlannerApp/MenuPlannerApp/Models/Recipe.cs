@@ -78,14 +78,14 @@ namespace Chibo.Models
 			_tag = tag;
 		}
 
-        public void Add(Ingredient toAdd, /*AMOUNT*/)
+        public void Add(Ingredient toAdd)
         {
-            _ingredients.Add(toAdd);
+            //_ingredients.Add(toAdd);
         }
 
-        public void Remove(Ingredient toRemove, /*AMOUNT*/)
+        public void Remove(Ingredient toRemove)
         {
-            _ingredients.Remove(toRemove);
+            //_ingredients.Remove(toRemove);
         }
 	}
 }

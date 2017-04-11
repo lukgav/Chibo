@@ -6,7 +6,7 @@ using Chibo.Models;
 namespace Chibo.UnitTesting
 {
     [TestFixture]
-    public class TestsSample
+    public class IngredientTest
     {
         Ingredient ingredient;
         [SetUp]
@@ -14,9 +14,6 @@ namespace Chibo.UnitTesting
         {
             ingredient = new Ingredient();
         }
-        
-        [TearDown]  //what is a teardown???
-        public void Tear() { }
         
         [Test]
         public void IngredientConstructor()
