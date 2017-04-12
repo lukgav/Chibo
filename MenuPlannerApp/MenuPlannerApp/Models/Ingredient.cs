@@ -33,6 +33,11 @@ namespace Chibo.Models
             {
                 return _mass;
             }
+
+            set
+            {
+                _mass = value;
+            }
         }
 
         public float CaloriesPerGram
@@ -43,6 +48,7 @@ namespace Chibo.Models
             }
         }
 
+        [Obsolete]
         public int NumberOfIngredients
         {
             get

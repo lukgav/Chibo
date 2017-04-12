@@ -3,23 +3,31 @@ using System.Collections.Generic;
 
 namespace Chibo.Models
 {
-	public class Menu
-	{
-		private List<Day> _days;
-		private string _name;
+    public class Menu
+    {
+        private List<Day> _days;
+        private string _name;
 
-		public string Name
-		{ 
-			get
-			{
-				return _name;
-			}
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
 
-			set
-			{
-				_name = value;
-			}
-		}
+            set
+            {
+                _name = value;
+            }
+        }
+
+        public int NumberOfDays
+        {
+            get
+            {
+                return _days.Count;
+            }
+        }
 
 		public Menu(string name)
 		{
@@ -28,19 +36,22 @@ namespace Chibo.Models
 			_days = new List<Day>();
 		}
 
-		public void AddDay(Day toAdd)
+        public void AddDay()
+        {
+            this.AddDay(new Day());
+        }
+
+        public void AddDay(Day toAdd)
 		{
 			_days.Add(toAdd);
 		}
 
-		public void AddDay()
+		public void RemoveAt(int index)
 		{
-			_days.Add(new Day());
-		}
-
-		public void RemoveDay(int index)
-		{
-			_days.RemoveAt(index);
+            if ((index > -1) && (index < _days.Count))
+            {
+                _days.RemoveAt(index);
+            }
 		}
 
 		public ListIngredients CompileShoppingList()
