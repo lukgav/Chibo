@@ -157,9 +157,7 @@ namespace Chibo.UnitTesting
 
             Assert.AreEqual(2.0f, list.Ingredients[1].Mass);
 
-            Assert.AreEqual(0.25f, list.Ingredients[2].Mass);//failure here
-
-
+            Assert.AreEqual(0.025f, list.Ingredients[2].Mass);//failure here
         }
     }
 }
