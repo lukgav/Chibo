@@ -46,8 +46,6 @@ namespace Chibo.Models
         {
             bool hasCheck = false;
 
-            float inputMass = input.Mass;
-
             foreach (Ingredient knownIng in Ingredients)
             {
                 if (knownIng.Name == input.Name)
@@ -64,8 +62,6 @@ namespace Chibo.Models
             {
                 _ingredients.Add(input);
             }
-
-            input.Mass = inputMass;
         }
 
         public void Remove(Ingredient input)
@@ -89,7 +85,7 @@ namespace Chibo.Models
                 return;
             }
 
-            //this.Purge();//BUG purge is removing the highest index always
+            this.Purge();//BUG purge is removing the highest index always
         }
 
         public void Purge()
