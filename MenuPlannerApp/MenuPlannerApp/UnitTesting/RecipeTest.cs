@@ -126,7 +126,32 @@ namespace Chibo.UnitTesting
         {
             Recipe recipe = new Recipe("potato stew", new string[] { "peel potatos", "stew potatos" }, new string[] { "dinner", "lunch", "stew" });
 
-            Assert.Ignore();//not implemented
+            recipe.Add(new Ingredient("potato", "apple of the earth", 0, 0.05f), 0.5f);
+
+            Assert.AreEqual(1, recipe.Ingredients.NumberOfIngredients);
+
+            Assert.AreEqual( 0.5f, recipe.Ingredients.Ingredients[0].Mass);
+
+
+            recipe.Add(new Ingredient("potato", "apple of the earth", 0, 0.05f), 0.5f);
+
+            Assert.AreEqual(1, recipe.Ingredients.NumberOfIngredients);
+
+            Assert.AreEqual(1.0f, recipe.Ingredients.Ingredients[0].Mass);
+
+
+            recipe.Add(new Ingredient("carrot", "horses love them", 0, 0.01f), 0.7f);
+
+            Assert.AreEqual(2, recipe.Ingredients.NumberOfIngredients);
+
+            Assert.AreEqual(0.7f, recipe.Ingredients.Ingredients[1].Mass);
+
+
+            recipe.Add(new Ingredient("carrot", "horses love them", 0, 0.01f), 0.7f);
+
+            Assert.AreEqual(2, recipe.Ingredients.NumberOfIngredients);
+
+            Assert.AreEqual(1.4f, recipe.Ingredients.Ingredients[1].Mass);
         }
 
         [Test]
@@ -134,7 +159,31 @@ namespace Chibo.UnitTesting
         {
             Recipe recipe = new Recipe("potato stew", new string[] { "peel potatos", "stew potatos" }, new string[] { "dinner", "lunch", "stew" });
 
-            Assert.Ignore();//not implemented
+            recipe.Add(new Ingredient("potato", "apple of the earth", 0, 0.05f), 0.5f);
+
+            recipe.Add(new Ingredient("potato", "apple of the earth", 0, 0.05f), 0.5f);
+
+            recipe.Add(new Ingredient("carrot", "horses love them", 0, 0.01f), 0.7f);
+
+            recipe.Add(new Ingredient("carrot", "horses love them", 0, 0.01f), 0.7f);
+
+
+            Assert.AreEqual( 2, recipe.Ingredients.NumberOfIngredients);
+
+
+            recipe.Remove(new Ingredient("carrot", "horses love them", 0, 0.01f), 0.7f);
+
+            Assert.AreEqual(2, recipe.Ingredients.NumberOfIngredients);
+
+            recipe.Remove(new Ingredient("carrot", "horses love them", 0, 0.01f), 0.7f);
+
+            Assert.AreEqual(1, recipe.Ingredients.NumberOfIngredients);
+
+
+
+            recipe.Remove(new Ingredient("potato", "apple of the earth", 0, 0.05f), 1.0f);
+
+            Assert.AreEqual(0, recipe.Ingredients.NumberOfIngredients);
         }
     }
 }

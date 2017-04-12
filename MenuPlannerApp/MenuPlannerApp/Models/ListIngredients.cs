@@ -52,7 +52,7 @@ namespace Chibo.Models
                 {
                     hasCheck = true;
 
-                    knownIng.Mass += input.Mass;//BUG this was setting input.Mass value
+                    knownIng.Mass += input.Mass;
 
                     break;
                 }
@@ -85,7 +85,7 @@ namespace Chibo.Models
                 return;
             }
 
-            this.Purge();//BUG purge is removing the highest index always
+            this.Purge();
         }
 
         public void Purge()

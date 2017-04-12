@@ -40,7 +40,7 @@ namespace Chibo.Models
 		}
 
 		/// <summary>
-		/// Gets or sets an array of strings. These strign act as tags to say what type of recipe this is. 
+		/// Gets or sets an array of strings. These strings act as tags to say what type of recipe this is. 
 		/// (e.g. lunch, dinner, brunch)
 		/// </summary>
 		public string[] Tag
@@ -78,16 +78,18 @@ namespace Chibo.Models
 			_tag = tag;
 		}
 
-        public void Add(Ingredient toAdd)
+        public void Add(Ingredient toAdd, float amount)
         {
-            throw new NotImplementedException("Waiting for ListIngredient update");
-            //_ingredients.Add(toAdd);
+            Ingredient toPass = new Ingredient(toAdd.Name, toAdd.Descrip, amount, toAdd.CaloriesPerGram);
+            
+            _ingredients.Add(toPass);
         }
 
-        public void Remove(Ingredient toRemove)
+        public void Remove(Ingredient toAdd, float amount)
         {
-            throw new NotImplementedException("Waiting for ListIngredient update");
-            //_ingredients.Remove(toRemove);
+            Ingredient toPass = new Ingredient(toAdd.Name, toAdd.Descrip, amount, toAdd.CaloriesPerGram);
+
+            _ingredients.Remove(toPass);
         }
-	}
+    }
 }

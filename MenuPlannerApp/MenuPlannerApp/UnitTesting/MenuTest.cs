@@ -125,16 +125,16 @@ namespace Chibo.UnitTesting
 
             Recipe recipeToAdd = new Recipe("roast potato", new string[] { "peel", "roast" }, new string[] { "dinner", "healthy" });
 
-            recipeToAdd.Add(new Ingredient("potato", "apple of the earth", 0.05f, 5.0f));
-            recipeToAdd.Add(new Ingredient("water", "watery", 1.0f, 0.0f));
+            recipeToAdd.Add(new Ingredient("potato", "apple of the earth", 0, 5.0f), 0.05f);
+            recipeToAdd.Add(new Ingredient("water", "watery", 0, 0.0f), 1.0f);
 
-            dayToAdd.Add( recipeToAdd, new string[] {"dinner", "healthy"});
+            dayToAdd.Add(recipeToAdd, new string[] {"dinner", "healthy"});
 
 
             recipeToAdd = new Recipe("tomato soup", new string[] { "boil", "simmer" }, new string[] { "dinner", "healthy" });
 
-            recipeToAdd.Add(new Ingredient("tomato", "red and squishy", 0.025f, 15.0f));
-            recipeToAdd.Add(new Ingredient("water", "watery", 1.0f, 0.0f));
+            recipeToAdd.Add(new Ingredient("tomato", "red and squishy",0, 15.0f), 0.025f);
+            recipeToAdd.Add(new Ingredient("water", "watery", 0, 0.0f), 1.0f);
 
             dayToAdd.Add(recipeToAdd, new string[] { "dinner", "healthy" });
 
@@ -155,9 +155,9 @@ namespace Chibo.UnitTesting
 
             Assert.AreEqual(0.05f, list.Ingredients[0].Mass);
 
-            Assert.AreEqual(2.0f, list.Ingredients[1].Name);
+            Assert.AreEqual(2.0f, list.Ingredients[1].Mass);
 
-            Assert.AreEqual(0.25f, list.Ingredients[2].Name);
+            Assert.AreEqual(0.25f, list.Ingredients[2].Mass);//failure here
 
 
         }
