@@ -8,8 +8,10 @@ namespace Chibo.Models
         private string _name;//Identifier
         private string _descrip;
         private float _mass;
+        private float _quantity;
         private float _caloriesPerGram;
         private int _numberOfIngredients;
+        private bool _isMassQuantityMeasured; //this boolean chooses whether the ingredient is measured in quantity or massS
 
         public string Name
         {
@@ -40,6 +42,18 @@ namespace Chibo.Models
             }
         }
 
+        public float Quantity
+        {
+        	get
+        	{
+        		return _quantity;
+        	}
+        	set
+        	{
+        		_quantity = value;
+        	}
+        }
+
         public float CaloriesPerGram
         {
             get
@@ -62,13 +76,26 @@ namespace Chibo.Models
             }
         }
 
+        public bool IsMassQuantityMeasured
+        {
+        	get
+        	{
+        		return _isMassQuantityMeasured;
+        	}
+        	set
+        	{
+        		_isMassQuantityMeasured = value;
+        	}
+        }
+
         public Ingredient(string name, string descrip, float mass,float caloriesPerGram)
         {
             _name = name; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
             _descrip = descrip;
             _mass = mass; // Is defult mass in micrograms, grams or kg?
             _caloriesPerGram = caloriesPerGram; //shot in the dark. Research can be done later on specific informaton.
-
+           	_isMassQuantityMeasured = true;
+           	
             _numberOfIngredients = 0;//default sanity check
         }
     }
