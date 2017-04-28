@@ -5,7 +5,7 @@ namespace Chibo.Models
 {
     public class Ingredient
     {
-        private string _name;//Identifier
+        private string _name;
         private string _descrip;
         private float _mass;
         private float _quantity;
@@ -88,6 +88,13 @@ namespace Chibo.Models
         	}
         }
 
+        public int ID
+        {
+            get;
+
+            set;
+        }
+
         public Ingredient(string name, string descrip, float mass,float caloriesPerGram)
         {
             _name = name; //What is naming convention? e.g. Will it be Uppercase for foods or all lower case?
@@ -97,6 +104,21 @@ namespace Chibo.Models
            	_isMassQuantityMeasured = true;
            	
             _numberOfIngredients = 0;//default sanity check
+        }
+
+        public bool SameID(IIdentifyable identified)
+        {
+            bool result = false;
+
+            if (this.GetType() == identified.GetType())
+            {
+                if (this.ID == identified.ID)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
         }
     }
 }

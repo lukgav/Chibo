@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Chibo.Models
 {
-	public class Recipe
+	public class Recipe : IIdentifyable
 	{
 		private ListIngredients _ingredients;
 
@@ -65,9 +65,16 @@ namespace Chibo.Models
                 return _ingredients;
             }
 
-		}
+        }
 
-		public Recipe(string name, string[] instruction, string[] tag)
+        public int ID
+        {
+            get;
+
+            set;
+        }
+
+        public Recipe(string name, string[] instruction, string[] tag)
 		{
 			_ingredients = new ListIngredients();
 
@@ -90,6 +97,21 @@ namespace Chibo.Models
             Ingredient toPass = new Ingredient(toAdd.Name, toAdd.Descrip, amount, toAdd.CaloriesPerGram);
 
             _ingredients.Remove(toPass);
+        }
+
+        public bool SameID(IIdentifyable identified)
+        {
+            bool result = false;
+
+            if (this.GetType() == identified.GetType())
+            {
+                if (this.ID == identified.ID)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
         }
     }
 }

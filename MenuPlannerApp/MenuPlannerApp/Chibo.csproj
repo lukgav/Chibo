@@ -52,6 +52,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\IIdentifyable.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\ListIngredients.cs" />
     <Compile Include="Models\Menu.cs" />
