@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Chibo.Views.MainMaster" Title="Master">
     <StackLayout>
         <ListView x:Name="ListViewMenuItems" SeparatorVisibility="None" HasUnevenRows="true" ItemsSource="{Binding MenuItems}">
@@ -21,10 +21,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10, 5">
-                            <Frame OutlineColor="#BDBDBD" Padding="15,5">
-                                <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="22" TextColor="#212121" />
-                            </Frame>
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+                        	<Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="22" TextColor="#212121" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
