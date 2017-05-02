@@ -7,8 +7,8 @@
     <ProjectGuid>{C9EE748B-389C-43C9-9DF4-73953AB1FF9F}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MenuPlannerApp.UWP</RootNamespace>
-    <AssemblyName>MenuPlannerApp.UWP</AssemblyName>
+    <RootNamespace>Chibo.UWP</RootNamespace>
+    <AssemblyName>Chibo.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -17,7 +17,7 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>MenuPlannerApp.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Chibo.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -105,7 +105,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="MenuPlannerApp.UWP_TemporaryKey.pfx" />
+    <None Include="Chibo.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -152,7 +152,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MenuPlannerApp\Chibo.csproj">
+    <ProjectReference Include="..\Chibo\Chibo.csproj">
       <Project>{A7736A0B-C873-454A-9962-CC509D83874E}</Project>
       <Name>Chibo</Name>
     </ProjectReference>

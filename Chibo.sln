@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo.Android", "MenuPlannerApp\MenuPlannerApp.Android\Chibo.Android.csproj", "{75781B42-1CAE-4281-9B8A-761844FC69DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo.Android", "Chibo\Chibo.Android\Chibo.Android.csproj", "{75781B42-1CAE-4281-9B8A-761844FC69DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo", "MenuPlannerApp\MenuPlannerApp\Chibo.csproj", "{A7736A0B-C873-454A-9962-CC509D83874E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo", "Chibo\Chibo\Chibo.csproj", "{A7736A0B-C873-454A-9962-CC509D83874E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo.UWP", "MenuPlannerApp\MenuPlannerApp.UWP\Chibo.UWP.csproj", "{C9EE748B-389C-43C9-9DF4-73953AB1FF9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo.UWP", "Chibo\Chibo.UWP\Chibo.UWP.csproj", "{C9EE748B-389C-43C9-9DF4-73953AB1FF9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo.iOS", "MenuPlannerApp\MenuPlannerApp.iOS\Chibo.iOS.csproj", "{693351B6-637F-4FBE-BA35-3CD53A0C0D18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo.iOS", "Chibo\Chibo.iOS\Chibo.iOS.csproj", "{693351B6-637F-4FBE-BA35-3CD53A0C0D18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chibo.Tests", "Chibo.Tests\Chibo.Tests.csproj", "{964F5F98-763A-4CF2-A769-03F6F1099A59}"
 EndProject

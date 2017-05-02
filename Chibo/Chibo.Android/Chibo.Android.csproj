@@ -124,7 +124,7 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MenuPlannerApp\Chibo.csproj">
+    <ProjectReference Include="..\Chibo\Chibo.csproj">
       <Project>{A7736A0B-C873-454A-9962-CC509D83874E}</Project>
       <Name>Chibo</Name>
     </ProjectReference>

@@ -8,9 +8,9 @@
     <ProjectGuid>{693351B6-637F-4FBE-BA35-3CD53A0C0D18}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MenuPlannerApp.iOS</RootNamespace>
+    <RootNamespace>Chibo.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MenuPlannerApp.iOS</AssemblyName>
+    <AssemblyName>Chibo.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -137,7 +137,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MenuPlannerApp\Chibo.csproj">
+    <ProjectReference Include="..\Chibo\Chibo.csproj">
       <Project>{A7736A0B-C873-454A-9962-CC509D83874E}</Project>
       <Name>Chibo</Name>
     </ProjectReference>
