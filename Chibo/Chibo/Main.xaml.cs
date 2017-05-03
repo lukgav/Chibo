@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chibo.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,16 +23,14 @@ namespace Chibo
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as MainMenuItem;
-            if (item == null)
-                return;
+			if (item == null)
+				return;
 
+			// create a page for the corresponding menu item
             var page = (Page)Activator.CreateInstance(item.TargetType);
-            page.Title = item.Title;
-            Detail = new NavigationPage(page)
-            {
-                BarBackgroundColor = Color.FromHex("#3F51B5"),
-                BarTextColor = Color.FromHex("#FFF"),
-            };
+			// use the page service to change views
+			PageService.ChangeView(page, item.Title);
+
             MasterPage.ListView.SelectedItem = null;
             IsPresented = false;
 

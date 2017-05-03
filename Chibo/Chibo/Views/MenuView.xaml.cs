@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chibo.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -28,22 +29,18 @@ namespace Chibo.Views
 
         public MenuViewViewModel()
         {
-            IncreaseCountCommand = new Command(IncreaseCount);
+            AddDayCommand = new Command(AddDay);
         }
 
-        int count;
+        public ICommand AddDayCommand { get; }
 
-        string countDisplay = "You clicked 0 times.";
-        public string CountDisplay
-        {
-            get { return countDisplay; }
-            set { countDisplay = value; OnPropertyChanged(); }
-        }
-
-        public ICommand IncreaseCountCommand { get; }
-
-        void IncreaseCount() =>
-            CountDisplay = $"You clicked {++count} times";
+		/// <summary>
+		/// Changes to the Add Day view
+		/// </summary>
+		public void AddDay()
+		{
+			PageService.ChangeView(new AddDayView(), "Add Day");
+		}
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Chibo.Views.MenuView" Title="Menu">
     <ScrollView>
         <StackLayout Padding="10">
             <Label Text="You have no days added yet!" HorizontalTextAlignment="Center" FontSize="18"/>
-            <Button Text="Add Day" />
+            <Button Text="Add Day" Command="{Binding AddDayCommand}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>
