@@ -92,9 +92,9 @@ namespace Chibo.Models
             _ingredients.Add(toPass);
         }
 
-        public void Remove(Ingredient toAdd, float amount)
+        public void Remove(Ingredient toRemove, float amount)
         {
-            Ingredient toPass = new Ingredient(toAdd.Name, toAdd.Descrip, amount, toAdd.CaloriesPerGram);
+            Ingredient toPass = new Ingredient(toRemove.Name, toRemove.Descrip, amount, toRemove.CaloriesPerGram);
 
             _ingredients.Remove(toPass);
         }
