@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
 
 namespace Chibo.Models
 {
 	public class Recipe : IIdentifyable
 	{
+        [PrimaryKey, AutoIncrement]
+        private int id { get; set; }
+
 		private ListIngredients _ingredients;
 
 		private string _name;

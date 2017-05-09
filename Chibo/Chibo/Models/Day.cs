@@ -1,37 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
 
 namespace Chibo.Models
 {
-	public class Day
-	{
-		private List<Recipe> _recipes;
+    public class Day
+    {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+        private List<Recipe> _recipes;
 
-		private List<string[]> _tags;
+        private List<string[]> _tags;
 
-		public List<Recipe> Recipes
-		{ 
-			get { return _recipes;}
-		}
+        public List<Recipe> Recipes
+        {
+            get { return _recipes; }
+        }
 
-		/// <summary>
-		/// Gets or sets a list of array strings. These strings act as tag to say what type of recipe each days recipes should be.
-		/// </summary>
-		public List<string[]> Tags
-		{
-			get
-			{
-				return _tags;
-			}
+        /// <summary>
+        /// Gets or sets a list of array strings. These strings act as tag to say what type of recipe each days recipes should be.
+        /// </summary>
+        public List<string[]> Tags
+        {
+            get
+            {
+                return _tags;
+            }
 
-			set
-			{
-				_tags = value;
-			}
-		}
+            set
+            {
+                _tags = value;
+            }
+        }
 
-		public Day()
-		{
+        public Day()
+        {
 			_recipes = new List<Recipe>();
 			_tags = new List<string[]>();
 		}
