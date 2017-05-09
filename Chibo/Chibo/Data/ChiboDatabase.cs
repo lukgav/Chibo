@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using SQLite;
+﻿using SQLite;
+using Chibo;
+using Chibo.Models;
 
 namespace Chibo.Data
 {
@@ -12,7 +12,9 @@ namespace Chibo.Data
         {
             //the constructor for the database
             database = new SQLiteAsyncConnection(dbpath);
-            //database.CreateTableAsync<>().Wait();
+            //database.CreateTableAsync<>
+            database.CreateTableAsync<Day>().Wait();
+            database.CreateTableAsync<Ingredient>().Wait();
         }
     }
 }
