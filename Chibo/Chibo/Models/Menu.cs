@@ -29,12 +29,36 @@ namespace Chibo.Models
             }
         }
 
-		public Menu(string name)
-		{
-			_name = name;
+        public Menu(string name)
+        {
+            _name = name;
 
-			_days = new List<Day>();
-		}
+            _days = new List<Day>();
+        }
+
+        public void FillDay(int index)
+        {
+            this.FillDays(index, index);
+        }
+
+        public void FillDays(int indexStart, int indexEnd)
+        {
+            if (indexStart < 0)
+            {
+                indexStart = 0;
+            }
+
+            if (indexEnd >= _days.Count)
+            {
+                indexEnd = _days.Count - 1;
+            }
+
+            int i = indexStart;
+            while (i <= indexEnd)
+            {
+                _days[i].RandomiseAll();
+            }
+        }
 
         public void AddDay()
         {
@@ -42,31 +66,31 @@ namespace Chibo.Models
         }
 
         public void AddDay(Day toAdd)
-		{
-			_days.Add(toAdd);
-		}
+        {
+            _days.Add(toAdd);
+        }
 
-		public void RemoveAt(int index)
-		{
+        public void RemoveAt(int index)
+        {
             if ((index > -1) && (index < _days.Count))
             {
                 _days.RemoveAt(index);
             }
-		}
+        }
 
-		public ListIngredients CompileShoppingList()
-		{
-			ListIngredients result = new ListIngredients();
+        public ListIngredients CompileShoppingList()
+        {
+            ListIngredients result = new ListIngredients();
 
-			foreach (Day d in _days)
-			{
-				foreach (Recipe r in d.Recipes)
-				{
-					result.Merge(r.Ingredients);
-				}
-			}
+            foreach (Day d in _days)
+            {
+                foreach (Recipe r in d.Recipes)
+                {
+                    result.Merge(r.Ingredients);
+                }
+            }
 
-			return result;
-		}
-	}
+            return result;
+        }
+    }
 }

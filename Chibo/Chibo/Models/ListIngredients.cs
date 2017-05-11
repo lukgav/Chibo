@@ -39,7 +39,7 @@ namespace Chibo.Models
 
         public void Merge(ListIngredients ls)
         {
-           this.Merge(ls.Ingredients);
+            this.Merge(ls.Ingredients);
         }
 
         public void Add(Ingredient input)
@@ -68,7 +68,7 @@ namespace Chibo.Models
         {
             //The input ingredient should know the amount to be removed (assumed positive)
             int i = 0;
-            while(i < Ingredients.Count)
+            while (i < Ingredients.Count)
             {
                 if (Ingredients[i].Name == input.Name)
                 {
