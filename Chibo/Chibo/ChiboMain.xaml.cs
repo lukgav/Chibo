@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Chibo.Data;
 
 namespace Chibo
 {
@@ -19,6 +20,9 @@ namespace Chibo
         protected override void OnStart()
         {
             // Handle when your app starts
+            //new chibomain db:
+            ChiboMain main = new ChiboMain();
+            ChiboDatabase db = ChiboMain.Database;
         }
 
         protected override void OnSleep()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,10 @@ namespace Chibo
         protected override void OnStart()
         {
             //TODO: platform-agnostic 'on-start' code.
+            Debug.WriteLine("testing memes");
+
         }
 
+        
     }
 }

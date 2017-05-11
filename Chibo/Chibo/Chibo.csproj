@@ -41,6 +41,7 @@
     </Compile>
     <Compile Include="Data\ChiboDatabase.cs" />
     <Compile Include="IFileHelper.cs" />
+    <Compile Include="LiveDebuggers\DBDebugger.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -55,6 +56,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\DayEnum.cs" />
     <Compile Include="Models\IIdentifyable.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\ListIngredients.cs" />
@@ -148,6 +150,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v6.0\Mono.Android.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.3.6.1\lib\portable-net45+win8+wp8+wpa81\nunit.framework.dll</HintPath>
     </Reference>

@@ -1,9 +1,10 @@
 ﻿using SQLite;
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Chibo;
-using Chibo.Models
+using Chibo.Models;
 
 namespace Chibo.Data
 {
@@ -23,15 +24,30 @@ namespace Chibo.Data
             //var info = db.GetTableInfo("recipes");
             //if (!info.Any())
             //{
-            ///    //table doesn't exist. close the DB, delete the created file, and copy over the 
+            //    //table doesn't exist. close the DB, delete the created file, and copy over the 
             //    db.Close();
             //    //
             //}
 
+            //see if database exists, if not copy it over from RAW.
+
+            Debug.WriteLine(dbpath);
+
+            Java.IO.File file = new Java.IO.File(dbpath);
+            if (file.Exists())
+            {
+                Debug.WriteLine("file exists!");
+            } else
+            {
+                Debug.WriteLine("nope doesn't exist.");
+            }
+
+            
+
             database = new SQLiteAsyncConnection(dbpath);
             //database.CreateTableAsync<>
-            database.CreateTableAsync<Day>().Wait();
-            database.CreateTableAsync<Ingredient>().Wait();
+
+            Debug.WriteLine(database.ToString());
         }
 
         public Task<List<Recipe>> GetRecipesByDay(RecipeDay requestedDay)
@@ -76,6 +92,6 @@ namespace Chibo.Data
             return null;
         }
 
-        public 
+        
     }
 }
