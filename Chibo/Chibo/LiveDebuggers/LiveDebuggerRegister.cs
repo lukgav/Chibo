@@ -10,6 +10,7 @@ namespace Chibo.LiveDebuggers
 
 			// if you add a LiveDebugger, register it below
 			results.Add(new TestLiveDebugger());
+            results.Add(new DBDebugger());
 
 			return results;
 		}
