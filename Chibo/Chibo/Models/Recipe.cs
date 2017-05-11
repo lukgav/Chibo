@@ -8,13 +8,9 @@ namespace Chibo.Models
 	{
         [PrimaryKey, AutoIncrement]
         private int id { get; set; }
-
-		private ListIngredients _ingredients;
-
+        private ListIngredients _ingredients;
 		private string _name;
-
 		private string[] _instruction;
-
 		private string[] _tag;
 
 		public string Name
@@ -88,6 +84,11 @@ namespace Chibo.Models
 
 			_tag = tag;
 		}
+
+        public Recipe()
+        {
+            //paramater-less constructor, only to be used by the database object so it knows what table layout to reference.
+        }
 
         public void Add(Ingredient toAdd, float amount)
         {
