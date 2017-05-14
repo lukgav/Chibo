@@ -82,6 +82,9 @@
       <DependentUpon>AddDayView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\PageService.cs" />
+    <Compile Include="Views\Debuggers\DubuggerView.xaml.cs">
+      <DependentUpon>DebuggerView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -98,6 +101,9 @@
     <EmbeddedResource Include="Views\AddDayView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Debuggers\DebuggerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -106,7 +112,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Debug\" />
+    <Folder Include="Views\Debuggers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Main.xaml">
