@@ -15,4 +15,5 @@ $toinsert = array($_POST['name'], $_POST['desc']);
 
 $result = $mydb->AddIngredient($toinsert[0], $toinsert[1]);
 
-echo $result->numColumns();
+//we done, move on:
+header('Location: /quem/view-all-ingredients.php');

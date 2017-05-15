@@ -14,6 +14,11 @@ if (!isset($_POST['ing-to-del'])) {
     //POST value set. we know what to delete.
     $mydb = new db_accessor();
     $result = $mydb->deleteIngredient($_POST['ing-to-del']);
-    echo $result;
+    if (!$result) {
+        //no errors deleting. moving on.
+        header('Location: /quem/view-all-ingredients.php');
 
+    } else {
+        echo "you are a shit coder. Look -> " . $result;
+    }
 }
