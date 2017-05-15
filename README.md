@@ -1,4 +1,4 @@
-#CHIBO SQLite database web-app / modification tool#
+# CHIBO SQLite database web-app / modification tool #
 
 ##### Jack Fuge, May 2017 #####
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>insert a new recipe</title>
+</head>
+<body>
+<h1>Add a new recipe:</h1>
+<br><hr>
+<form action="addrecipe.php" method="post">
+    Recipe name:<br>
+    <input type="text" name="recipename"><br>
+
+    Instructions. Use <b>~</b> to separate steps, and <b>\</b> to signal the end of the instructions.<br>
+    <textarea name="instructions" rows="10" cols="50"></textarea><br>
+
+    Recipe tags. <b>;</b> to separate tags, and <b>\</b> after the last tag.<br>
+    <input type="text" name="tags" size="50"><br>
+
+    <input type="submit" value="Submit"><br><br>
+
+    TO ADD LATER: images. dw for now.
+</form>
+</body>
+</html>
