@@ -22,7 +22,7 @@ if ($rows == 0) {
 } else {
 
     //table setup stuff
-    echo '<table class="tg"><tr><th class="tg-title" colspan="4">';
+    echo '<table class="tg"><tr><th class="tg-title" colspan="5">';
 
     //text in title bar
     echo $rows . " result(s)." . '</th></tr>';
@@ -32,7 +32,8 @@ if ($rows == 0) {
     <td class="tg-heading">Recipe ID:</td>
     <td class="tg-heading">Recipe Name:</td>
     <td class="tg-heading">Recipe Tags:</td>
-    <td class="tg-heading">Recipe Instructions:</td></tr>';
+    <td class="tg-heading">Recipe Instructions:</td>
+    <td class="tg-heading">Delete?</td></tr>';
 
     //while there are results to process, echo the stuff out of them:
     while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
@@ -42,6 +43,7 @@ if ($rows == 0) {
         echo '<td class="tg-yw4l">' . $row['recipe name'] . "</td>";
         echo '<td class="tg-yw4l">' .  $row['recipe tags'] . "</td>";
         echo '<td class="tg-yw4l">' .  $row['recipe instructions'] . "</td>";
+        echo '<td><form action="delete-recipe.php" method="post"><input type="hidden" name="rec-to-del" value="' . $row['recipe ID'] . '"><input type="submit" value="delete" ></form></td></tr>';
     }
 }
 echo "Operation done successfully\n";

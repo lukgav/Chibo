@@ -42,9 +42,10 @@ if ($rows == 0) {
         echo '<td class="tg-yw4l">' . $row['recipe name'] . "</td>";
         echo '<td class="tg-yw4l">' .  $row['recipe tags'] . "</td>";
         echo '<td class="tg-yw4l">' .  $row['ingredient id'] . "</td>";
-        echo '<td class="tg-yw4l">' .  $row['ingredient name'] . "</td>";
+        echo '<td class="tg-yw4l">' .  $row['ingredient name'] . "</td></tr>";
     }
 }
+echo "</table>";
 echo "Operation done successfully\n";
 $db->close();
 ?>

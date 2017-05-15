@@ -42,14 +42,10 @@ if ($rows == 0) {
     //while there are results to process, echo the stuff out of them:
     while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
         //row setup stuff
-        echo '<tr>
-';
-        echo '<td class="tg-yw4l">' . $row['ingredient id'] . '
-';
-        echo '<td class="tg-yw4l">' . $row['ingredient name'] . "</td>
-";
-        echo '<td class="tg-yw4l">' . $row['ingredient description'] . "</td>
-";
+        echo '<tr>';
+        echo '<td class="tg-yw4l">' . $row['ingredient id'] . '';
+        echo '<td class="tg-yw4l">' . $row['ingredient name'] . "</td>";
+        echo '<td class="tg-yw4l">' . $row['ingredient description'] . "</td>";
         echo '<td><form action="delete-ingredient.php" method="post"><input type="hidden" name="ing-to-del" value="' . $row['ingredient id'] . '"><input type="submit" value="delete" ></form></td></tr>';
     }
 ?>

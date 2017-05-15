@@ -15,4 +15,7 @@ $toinsert = array($_POST['recipename'], $_POST['instructions'], $_POST['tags']);
 
 $result = $mydb->AddRecipe($toinsert[0], $toinsert[1], $toinsert[2]);
 
-echo $result->numColumns();
+if ($result->numColumns() == 0) {
+    //we out here
+    echo 'Done. you can <a href="insert-recipe.html">add another </a>or you can <a href="view-all-recipes.php">view all recipes.</a>';
+}

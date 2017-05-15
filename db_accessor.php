@@ -67,6 +67,16 @@ EOF;
         return parent::query($sql);
     }
 
+    function getRecipesWithIng ($ing_id)
+    {
+        //returns a list of the recipes currently using the ingredient ID supplied.
+        $sql = <<<EOF
+SELECT recipes.id AS "recipe id", recipes.name AS "recipe name", ingredients.id AS "ingredient id", ingredients.name AS "ingredient name" from recipes INNER JOIN ingredientInRecipe ON ingredientInRecipe.recipeID = recipes.ID INNER JOIN ingredients ON ingredients.id = ingredientInRecipe.ingredientID WHERE ingredients.id  = $ing_id;
+EOF;
+        return parent::query($sql);
+
+    }
+
     function getIngredients ()
     {
         /**
@@ -152,6 +162,19 @@ DELETE FROM ingredients WHERE id = $IDtodelete;
 EOF;
             return parent::querySingle($sql);
 
+        }
+    }
+
+    function DeleteRecipe($idToDelete)
+    {
+        //delete the recipe of a supplied ID.
+        if (!isset($idToDelete)) {
+            return null;
+        } else {
+            $sql = <<<EOF
+DELETE FROM recipes WHERE id = $idToDelete;
+EOF;
+            return parent::querySingle($sql);
         }
     }
 
