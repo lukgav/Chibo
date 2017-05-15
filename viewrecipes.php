@@ -13,14 +13,15 @@ require "db_accessor.php";
 <body>
 <?php
 $db = new db_accessor();
-$ret = $db->getRecipePlusIngredients(1);   //TODO: add get/post style ID updating.
+$ret = $db->getRecipes();
 //echo $ret;
-$rows = count($ret);
+$rows = $db->CountRecipes();
 if ($rows == 0) {
     echo "no recipes match this ID.";
 } else {
+
     //table setup stuff
-    echo '<table class="tg"><tr><th class="tg-title" colspan="5">';
+    echo '<table class="tg"><tr><th class="tg-title" colspan="4">';
 
     //text in title bar
     echo $rows . " result(s)." . '</th></tr>';
@@ -30,8 +31,7 @@ if ($rows == 0) {
     <td class="tg-heading">Recipe ID:</td>
     <td class="tg-heading">Recipe Name:</td>
     <td class="tg-heading">Recipe Tags:</td>
-    <td class="tg-heading">Ingredient ID:</td>
-    <td class="tg-heading">Ingredient Name:</td></tr>';
+    <td class="tg-heading">Recipe Instructions:</td></tr>';
 
     //while there are results to process, echo the stuff out of them:
     while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
@@ -40,8 +40,7 @@ if ($rows == 0) {
         echo '<td class="tg-yw4l">' . $row['recipe ID'] . "</td>";
         echo '<td class="tg-yw4l">' . $row['recipe name'] . "</td>";
         echo '<td class="tg-yw4l">' .  $row['recipe tags'] . "</td>";
-        echo '<td class="tg-yw4l">' .  $row['ingredient id'] . "</td>";
-        echo '<td class="tg-yw4l">' .  $row['ingredient name'] . "</td>";
+        echo '<td class="tg-yw4l">' .  $row['recipe instructions'] . "</td>";
     }
 }
 echo "Operation done successfully\n";

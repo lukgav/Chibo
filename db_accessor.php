@@ -26,7 +26,7 @@ class db_accessor extends \SQLite3
         parent::close();
     }
 
-    function getRecipes ()
+    function getAllRecipesAndIngredients ()
     {
         //gets an array of recipes
         $sql = <<<EOF
@@ -35,7 +35,7 @@ EOF;
         return parent::query($sql);
     }
 
-    function getRecipe($id)
+    function getRecipePlusIngredients($id)
     {
         //returns details for a recipe with the ID, and associated ingredients
         $sql = <<<EOF
@@ -45,19 +45,33 @@ EOF;
 
     }
 
-    function getRecipesAndIngredients ()
+    function getRecipes ()
     {
         //gets an array of recipes with their ingredients.
+        $sql = <<<EOF
+SELECT recipes.id AS "recipe ID", recipes.name AS "recipe name", recipes.tags AS "recipe tags", recipes.instructions AS "recipe instructions" from recipes;
+EOF;
+        return parent::query($sql);
     }
 
     function AddRecipe($name, $instructions, $tags)
     {
         //add a recipe with the three required things.
         $sql = <<<EOF
-INSERT INTO recipes [(name, instructions, tags)] VALUES ($name, $instructions, $tags);
+INSERT INTO recipes (name, instructions, tags) VALUES ('$name', '$instructions', '$tags');
 EOF;
         return parent::query($sql);
     }
+    function CountRecipes()
+    {
+        //returns a count
+        $sql = <<<EOF
+SELECT COUNT(*) as count FROM recipes;
+EOF;
 
+        return parent::querySingle($sql);
+    }
     //TODO: add an overload for AddRecipe with image or some shit
+
+
 }

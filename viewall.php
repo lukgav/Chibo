@@ -13,7 +13,7 @@ require "db_accessor.php";
 <body>
 <?php
 $db = new db_accessor();
-$ret = $db->getRecipes();
+$ret = $db->getAllRecipesAndIngredients();
 //echo $ret;
 $rows = count($ret);
 if ($rows == 0) {
