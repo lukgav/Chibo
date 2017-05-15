@@ -58,6 +58,14 @@ EOF;
         return parent::query($sql);
     }
 
+    function getRecipe ($idToGet)
+    {
+        //gets the details for an individual recipe, minus ingredients.
+        $sql = <<<EOF
+SELECT recipes.id AS "recipe id", recipes.name AS "recipe name", recipes.tags AS "recipe tags", recipes.instructions AS "recipe instructions" FROM recipes WHERE recipes.id = $idToGet; 
+EOF;
+        return parent::query($sql);
+    }
 
     function getIngredients ()
     {
