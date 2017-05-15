@@ -10,7 +10,8 @@ require "db_accessor.php";
     <title>Viewing all entries in DB</title>
     <link rel="icon" href="assets/icon.ico" type="image/x-icon">
 </head>
-<body>
+<tr>
+<h3><a href="index.html">Return Home.</a> </h3>
 <?php
 $db = new db_accessor();
 $ret = $db->getIngredients();
@@ -20,27 +21,42 @@ if ($rows == 0) {
     echo "no ingredients in DB.";
 } else {
     //table setup stuff
-    echo '<table class="tg"><tr><th class="tg-title" colspan="3">';
+    echo '<table class="tg">
+    <tr><th class="tg-title" colspan="4">';
 
     //text in title bar
-    echo $rows . " result(s)." . '</th></tr>';
+    echo $rows . " result(s)." . '</th></tr>
+';
 
     //echo the table and headings:
-    echo '<tr>
+    ?>
+<tr>
     <td class="tg-heading">Ingredient ID:</td>
     <td class="tg-heading">Ingredient Name:</td>
-    <td class="tg-heading">Ingredient Description:</td></tr>';
+    <td class="tg-heading">Ingredient Description:</td>
+    <td class="tg-heading">Delete?</td>
+</tr>
+
+<?php
 
     //while there are results to process, echo the stuff out of them:
     while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
         //row setup stuff
-        echo '<tr>';
-        echo '<td class="tg-yw4l">' . $row['ingredient id'] . "</td>";
-        echo '<td class="tg-yw4l">' . $row['ingredient name'] . "</td>";
-        echo '<td class="tg-yw4l">' . $row['ingredient description'] . "</td>";
+        echo '<tr>
+';
+        echo '<td class="tg-yw4l">' . $row['ingredient id'] . '
+';
+        echo '<td class="tg-yw4l">' . $row['ingredient name'] . "</td>
+";
+        echo '<td class="tg-yw4l">' . $row['ingredient description'] . "</td>
+";
+        echo '<td><form action="delete-ingredient.php" method="post"><input type="hidden" name="ing-to-del" value="' . $row['ingredient id'] . '"><input type="submit" value="delete" ></form></td></tr>';
     }
+?>
+</table>
+
+<?php
 }
-echo "Operation done successfully\n";
 $db->close();
 ?>
 </body>

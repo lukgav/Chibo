@@ -9,7 +9,7 @@ require "db_accessor.php";
  */
 if (!isset($_POST['ing-to-del'])) {
     //value not set. idk how we got here. get tf out.
-    echo 'value not set. try <a href="viewallingredients.php">going back.</a>';
+    echo 'value not set. try <a href="view-all-ingredients.php">going back.</a>';
 } else {
     //POST value set. we know what to delete.
     $mydb = new db_accessor();
