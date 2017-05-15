@@ -8,6 +8,7 @@ require "db_accessor.php";
     <link rel="stylesheet" href="css/table.css">
     <meta charset="UTF-8">
     <title>Viewing all entries in DB</title>
+    <link rel="icon" href="assets/icon.ico" type="image/x-icon">
 </head>
 <body>
 <?php
