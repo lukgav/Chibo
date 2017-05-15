@@ -71,6 +71,15 @@ EOF;
         return parent::query($sql);
     }
 
+    function getIngredientRecipeLinks ()
+    {
+        //view the relationships between recipes and ingredients
+        $sql = <<<EOF
+SELECT recipes.id AS "recipe id", recipes.name as "recipe name", ingredients.id as "ingredient id", ingredients.name as "ingredient name" from recipes INNER JOIN ingredientInRecipe ON ingredientInRecipe.recipeID = recipes.ID INNER JOIN ingredients ON ingredients.id = ingredientInRecipe.ingredientID;
+EOF;
+        return parent::query($sql);
+    }
+
 
     /**
      * "adders"
