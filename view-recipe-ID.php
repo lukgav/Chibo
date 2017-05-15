@@ -11,11 +11,17 @@ require "db_accessor.php";
     <link rel="icon" href="assets/icon.ico" type="image/x-icon">
 </head>
 <body>
+<h3><a href="index.html">return home.</a> </h3>
 <?php
 $db = new db_accessor();
-$ret = $db->getRecipePlusIngredients(1);   //TODO: add get/post style ID updating.
-//echo $ret;
-$rows = $db->CountRecipes();;
+if (!isset($_GET['id'])) {
+    //id wasn't pushed in the GET method. use 1.
+    $ret = $db->getRecipePlusIngredients(1);
+} else {
+    $ret = $db->getRecipePlusIngredients($_GET['id']);
+}
+
+$rows = count($ret);
 if ($rows == 0) {
     echo "no recipes match this ID.";
 } else {
@@ -26,12 +32,14 @@ if ($rows == 0) {
     echo $rows . " result(s)." . '</th></tr>';
 
     //echo the table and headings:
-    echo '<tr>
+    ?>
+    <tr>
     <td class="tg-heading">Recipe ID:</td>
     <td class="tg-heading">Recipe Name:</td>
     <td class="tg-heading">Recipe Tags:</td>
     <td class="tg-heading">Ingredient ID:</td>
-    <td class="tg-heading">Ingredient Name:</td></tr>';
+    <td class="tg-heading">Ingredient Name:</td></tr>
+<?php
 
     //while there are results to process, echo the stuff out of them:
     while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
@@ -44,8 +52,15 @@ if ($rows == 0) {
         echo '<td class="tg-yw4l">' .  $row['ingredient name'] . "</td>";
     }
 }
-echo "Operation done successfully\n";
 $db->close();
 ?>
+
+<br><br><h2>View a different recipe instead</h2>
+<form action="view-recipe-ID.php" method="get">
+    ID: <br>
+    <input type="text" name="id"><br>
+    <input type="submit" value="view new ID">
+</form>
+<br><br>
 </body>
 </html>

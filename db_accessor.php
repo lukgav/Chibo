@@ -26,6 +26,10 @@ class db_accessor extends \SQLite3
         parent::close();
     }
 
+    /**
+     * "getters" of data.
+     */
+
     function getAllRecipesAndIngredients ()
     {
         //gets an array of recipes
@@ -67,6 +71,12 @@ EOF;
         return parent::query($sql);
     }
 
+
+    /**
+     * "adders"
+     */
+
+
     function AddRecipe($name, $instructions, $tags)
     {
         //add a recipe with the three required things.
@@ -84,6 +94,10 @@ INSERT INTO ingredients (name, description) VALUES ('$name', '$description');
 EOF;
         return parent::query($sql);
     }
+
+    /**
+     * "counters" for ingredients, recipes and links.
+     */
 
     function CountRecipes()
     {
@@ -105,6 +119,24 @@ EOF;
 
     }
     //TODO: add an overload for AddRecipe with image or some shit
+
+    /**
+     * "deleters" of ingredients, recipes and links.
+     */
+
+    function DeleteIngredient($IDtodelete)
+    {
+        //delete the ingredient of supplied id.
+        if (!isset($IDtodelete)) {
+            return null;
+        } else {
+            $sql = <<<EOF
+DELETE FROM ingredients WHERE id = $IDtodelete;
+EOF;
+            return parent::querySingle($sql);
+
+        }
+    }
 
 
 }
