@@ -54,6 +54,19 @@ EOF;
         return parent::query($sql);
     }
 
+
+    function getIngredients ()
+    {
+        /**
+         * Gets all the ingredients stored in the database.
+         */
+        //gets all the ingredients stored in the DB
+        $sql = <<<EOF
+SELECT ingredients.id AS "ingredient id", ingredients.name AS "ingredient name", ingredients.description AS "ingredient description" from ingredients;
+EOF;
+        return parent::query($sql);
+    }
+
     function AddRecipe($name, $instructions, $tags)
     {
         //add a recipe with the three required things.
@@ -62,6 +75,16 @@ INSERT INTO recipes (name, instructions, tags) VALUES ('$name', '$instructions',
 EOF;
         return parent::query($sql);
     }
+
+    function AddIngredient($name, $description)
+    {
+        //adds an ingredient with a generated ID, with supplied name and description
+        $sql = <<<EOF
+INSERT INTO ingredients (name, description) VALUES ('$name', '$description');
+EOF;
+        return parent::query($sql);
+    }
+
     function CountRecipes()
     {
         //returns a count
@@ -70,6 +93,16 @@ SELECT COUNT(*) as count FROM recipes;
 EOF;
 
         return parent::querySingle($sql);
+    }
+
+    function CountIngredients()
+    {
+        //returns a count of number of ingredients in the DB
+        $sql = <<<EOF
+SELECT COUNT(*) as count FROM ingredients;
+EOF;
+        return parent::querySingle($sql);
+
     }
     //TODO: add an overload for AddRecipe with image or some shit
 

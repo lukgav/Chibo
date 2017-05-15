@@ -15,7 +15,7 @@ require "db_accessor.php";
 $db = new db_accessor();
 $ret = $db->getRecipePlusIngredients(1);   //TODO: add get/post style ID updating.
 //echo $ret;
-$rows = count($ret);
+$rows = $db->CountRecipes();;
 if ($rows == 0) {
     echo "no recipes match this ID.";
 } else {
