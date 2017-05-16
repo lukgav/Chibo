@@ -5,6 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 using Chibo.Data;
+using System.Diagnostics;
 
 namespace Chibo
 {
@@ -22,7 +23,9 @@ namespace Chibo
             // Handle when your app starts
             //new chibomain db:
             ChiboMain main = new ChiboMain();
+
             ChiboDatabase db = ChiboMain.Database;
+            Debug.WriteLine("database is created.");
         }
 
         protected override void OnSleep()

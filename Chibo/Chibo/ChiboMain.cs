@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,15 +32,6 @@ namespace Chibo
                 }
                 return database;
             }
-        }
-
-        protected override void OnStart()
-        {
-            //TODO: platform-agnostic 'on-start' code.
-            Debug.WriteLine("testing memes");
-
-        }
-
-        
+        }      
     }
 }

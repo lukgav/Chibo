@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Chibo;
 using Chibo.Models;
+using System.IO;
+using Android.Content.Res;
+using Android;
 
 namespace Chibo.Data
 {
@@ -36,10 +39,15 @@ namespace Chibo.Data
             Java.IO.File file = new Java.IO.File(dbpath);
             if (file.Exists())
             {
-                Debug.WriteLine("file exists!");
+                Debug.WriteLine("file exists! no need to copy from assets.");
             } else
             {
-                Debug.WriteLine("nope doesn't exist.");
+                Debug.WriteLine("nope doesn't exist. attempting to create file...");
+                //RESULTING FILE WHEN COPIED IS IN VARIABLE `dbpath`
+                
+                
+                Debug.WriteLine("file created successfully.... copying into it now");
+
             }
 
             
@@ -49,6 +57,7 @@ namespace Chibo.Data
 
             Debug.WriteLine(database.ToString());
         }
+
 
         public Task<List<Recipe>> GetRecipesByDay(RecipeDay requestedDay)
         {
