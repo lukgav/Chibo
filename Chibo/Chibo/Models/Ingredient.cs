@@ -1,17 +1,20 @@
 using System;
+using SQLite;
 using System.Collections.Generic;
 
 namespace Chibo.Models
 {
     public class Ingredient
     {
+        [PrimaryKey, AutoIncrement]
+        private int id { get; set; }
         private string _name;
         private string _descrip;
         private float _mass;
         private float _quantity;
         private float _caloriesPerGram;
         private int _numberOfIngredients;
-        private bool _isMassQuantityMeasured; //this boolean chooses whether the ingredient is measured in quantity or massS
+        private bool _isMassQuantityMeasured; //this boolean chooses whether the ingredient is measured in quantity or mass
 
         public string Name
         {
@@ -104,6 +107,11 @@ namespace Chibo.Models
             _isMassQuantityMeasured = true;
 
             _numberOfIngredients = 0;//default sanity check
+        }
+
+        public Ingredient()
+        {
+            //empty constructor 
         }
 
         public bool SameID(IIdentifyable identified)
