@@ -1,4 +1,5 @@
-﻿using Chibo.Services;
+﻿using Chibo.Models;
+using Chibo.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,25 +14,45 @@ using Xamarin.Forms.Xaml;
 
 namespace Chibo.Views
 {
-
+	/// <summary>
+	/// Menu view.
+	/// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuView : ContentPage
     {
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:Chibo.Views.MenuView"/> class.
+		/// </summary>
         public MenuView()
         {
             InitializeComponent();
             BindingContext = new MenuViewViewModel();
-        }
+
+			// get the menu and assign to list
+			Menu menu = PageService.GetMenu();
+			menu.AddDay(new Day());
+			menu.AddDay(new Day());
+			MenuItems.ItemsSource = menu.Days();
+		}
     }
 
+	/// <summary>
+	/// Menu view view model.
+	/// </summary>
     class MenuViewViewModel : INotifyPropertyChanged
     {
-
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:Chibo.Views.MenuViewViewModel"/> class.
+		/// </summary>
         public MenuViewViewModel()
         {
             AddDayCommand = new Command(AddDay);
         }
 
+		/// <summary>
+		/// Command used to change to the Add Day view
+		/// </summary>
+		/// <value>The add day command.</value>
         public ICommand AddDayCommand { get; }
 
 		/// <summary>
@@ -41,7 +62,6 @@ namespace Chibo.Views
 		{
 			PageService.ChangeView(new AddDayView(), "Add Day");
 		}
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName]string propertyName = "") =>

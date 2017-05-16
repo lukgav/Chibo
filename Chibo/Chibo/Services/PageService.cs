@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chibo.Models;
+using System;
 using Xamarin.Forms;
 
 namespace Chibo.Services
@@ -25,6 +26,13 @@ namespace Chibo.Services
 				BarBackgroundColor = Color.FromHex("#3F51B5"),
 				BarTextColor = Color.FromHex("#FFF"),
 			};
+
+		}
+
+		public static Menu GetMenu()
+		{
+			var app = Application.Current as App;
+			return app.Menu;
 		}
 	}
 }

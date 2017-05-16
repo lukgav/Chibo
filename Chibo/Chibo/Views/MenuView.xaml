@@ -3,7 +3,16 @@
     <ScrollView>
         <StackLayout Padding="10">
             <Label Text="You have no days added yet!" HorizontalTextAlignment="Center" FontSize="18"/>
-            <Button Text="Add Day" Command="{Binding AddDayCommand}" />
+
+			<ListView x:Name="MenuItems">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<TextCell Text="{Binding Name}" />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			
+			<Button Text="Add Day" Command="{Binding AddDayCommand}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chibo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,10 @@ namespace Chibo
             InitializeComponent();
 
             MainPage = new Chibo.Main();
+			Menu = new Menu("Chibo");
         }
+
+		public Menu Menu { get; set; }
 
         protected override void OnStart()
         {
