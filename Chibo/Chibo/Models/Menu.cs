@@ -70,6 +70,11 @@ namespace Chibo.Models
             _days.Add(toAdd);
         }
 
+        public List<Day> Days()
+        {
+            return _days;
+        }
+
         public void RemoveAt(int index)
         {
             if ((index > -1) && (index < _days.Count))
