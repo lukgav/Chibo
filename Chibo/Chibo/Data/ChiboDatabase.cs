@@ -35,21 +35,6 @@ namespace Chibo.Data
             //see if database exists, if not copy it over from RAW.
 
             Debug.WriteLine(dbpath);
-
-            Java.IO.File file = new Java.IO.File(dbpath);
-            if (file.Exists())
-            {
-                Debug.WriteLine("file exists! no need to copy from assets.");
-            } else
-            {
-                Debug.WriteLine("nope doesn't exist. attempting to create file...");
-                //RESULTING FILE WHEN COPIED IS IN VARIABLE `dbpath`
-                
-                
-                Debug.WriteLine("file created successfully.... copying into it now");
-
-            }
-
             
 
             database = new SQLiteAsyncConnection(dbpath);

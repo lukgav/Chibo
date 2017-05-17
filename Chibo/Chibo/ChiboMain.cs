@@ -12,7 +12,7 @@ using Chibo.Data;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Chibo
 {
-    public class ChiboMain : Application
+    public class ChiboMain
     {
 
         static ChiboDatabase database;
