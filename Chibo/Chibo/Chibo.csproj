@@ -90,6 +90,9 @@
     <Compile Include="Views\Debuggers\DubuggerView.xaml.cs">
       <DependentUpon>DebuggerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddMealView.xaml.cs">
+      <DependentUpon>AddMealView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -107,6 +110,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Debuggers\DebuggerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddMealView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

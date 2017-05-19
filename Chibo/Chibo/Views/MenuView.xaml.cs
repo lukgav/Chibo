@@ -30,9 +30,8 @@ namespace Chibo.Views
 
 			// get the menu and assign to list
 			Menu menu = PageService.GetMenu();
-			menu.AddDay(new Day());
-			menu.AddDay(new Day());
 			MenuItems.ItemsSource = menu.Days();
+            NoDaysLabel.IsVisible = menu.Days().Count() == 0;
 		}
     }
 
