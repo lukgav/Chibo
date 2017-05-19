@@ -123,5 +123,8 @@ namespace Chibo.Models
                 throw new IndexOutOfRangeException(String.Format("The Recipes and Tags lists have misalligned by Recipes length:{0}, Tags length:{1}, Total misallighment: {2}", _recipes.Count, _tags.Count, Math.Abs(_recipes.Count - _tags.Count)));
             }
         }
+
+        public DateTime Date { get; set; }
+        public string DateLabel { get => Date.ToString();  }
     }
 }
