@@ -93,6 +93,12 @@
     <Compile Include="Views\AddMealView.xaml.cs">
       <DependentUpon>AddMealView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RecipesView.xaml.cs">
+      <DependentUpon>RecipesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShoppingListView.xaml.cs">
+      <DependentUpon>ShoppingListView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -113,6 +119,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddMealView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RecipesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShoppingListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
