@@ -24,6 +24,14 @@ namespace Chibo.Views
         {
             InitializeComponent();
             BindingContext = new DashboardViewViewModel();
+            RecipeList.SelectedItem = null;
+        }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ListView list = (ListView)sender;
+            Recipe recipe = (Recipe)list.SelectedItem;
+            await Navigation.PushAsync(new ViewRecipeView(recipe)); // todo: fix deselecting
         }
     }
 

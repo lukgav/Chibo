@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Chibo.Views.DashboardView" Title="Chibo">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Chibo.Views.DashboardView" Title="Chibo" >
     <ScrollView>
         <StackLayout Padding="10">
             <Label Text="Welcome to Chibo!" FontSize="24" HorizontalTextAlignment="Center" />
@@ -8,7 +8,7 @@
             <StackLayout IsVisible="{Binding HasToday}">
                 <Label Text="{Binding Today.DateLabel}" HorizontalTextAlignment="Center"/>
                 <Label Text="{Binding Today.Recipes.Count, StringFormat='You have {0} meals planned today.'}" HorizontalTextAlignment="Center"></Label>
-                <ListView ItemsSource="{Binding Today.Recipes}">
+                <ListView ItemsSource="{Binding Today.Recipes, Mode=TwoWay}" ItemSelected="ListView_ItemSelected" x:Name="RecipeList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}" />
