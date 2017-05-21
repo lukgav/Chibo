@@ -4,15 +4,16 @@
         <StackLayout Padding="10">
             <Label Text="You have no days added yet!" HorizontalTextAlignment="Center" FontSize="18" x:Name="NoDaysLabel"/>
 
-			<ListView x:Name="MenuItems">
+            <Button Text="Add Day" Command="{Binding AddDayCommand}" />
+
+            <ListView x:Name="MenuItems" ItemSelected="MenuItems_ItemSelected">
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<TextCell Text="{Binding DateLabel}" />
+						<TextCell Text="{Binding DateLabel}" Command="{Binding EditDayCommand}" CommandParameter="{Binding .}"/>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-			
-			<Button Text="Add Day" Command="{Binding AddDayCommand}" />
+		
         </StackLayout>
     </ScrollView>
 </ContentPage>

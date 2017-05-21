@@ -20,10 +20,12 @@ namespace Chibo.Views
         /// </summary>
         public Day Day;
 
+        public bool IsEditing;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Chibo.Views.AddMealView"/> class.
         /// </summary>
-        public AddMealView(Day day)
+        public AddMealView(Day day, bool isEditing)
         {
             InitializeComponent();
 
@@ -37,6 +39,7 @@ namespace Chibo.Views
 
             // assign recipes to list
             MealItems.ItemsSource = Recipes;
+            IsEditing = isEditing;
 
         }
 
@@ -79,7 +82,7 @@ namespace Chibo.Views
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             Day.Recipes.Add((Recipe)MealItems.SelectedItem);
-            Navigation.PushAsync(new AddDayView(Day));
+            Navigation.PushAsync(new AddDayView(Day, IsEditing));
         }
     }
 

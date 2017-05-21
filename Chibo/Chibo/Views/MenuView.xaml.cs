@@ -30,14 +30,21 @@ namespace Chibo.Views
 
 			// get the menu and assign to list
 			Menu menu = PageService.GetMenu();
-			MenuItems.ItemsSource = menu.Days();
-            NoDaysLabel.IsVisible = menu.Days().Count() == 0;
+			MenuItems.ItemsSource = menu.Days;
+            NoDaysLabel.IsVisible = menu.Days.Count() == 0;
 		}
+
+        private void MenuItems_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            PageService.ChangeView(
+                new AddDayView((Day)MenuItems.SelectedItem, true), "Edit Day"
+            );
+        }
     }
 
-	/// <summary>
-	/// Menu view view model.
-	/// </summary>
+    /// <summary>
+    /// Menu view view model.
+    /// </summary>
     class MenuViewViewModel : INotifyPropertyChanged
     {
 		/// <summary>
@@ -54,10 +61,10 @@ namespace Chibo.Views
 		/// <value>The add day command.</value>
         public ICommand AddDayCommand { get; }
 
-		/// <summary>
-		/// Changes to the Add Day view
-		/// </summary>
-		public void AddDay()
+        /// <summary>
+        /// Changes to the Add Day view
+        /// </summary>
+        public void AddDay()
 		{
 			PageService.ChangeView(new AddDayView(), "Add Day");
 		}

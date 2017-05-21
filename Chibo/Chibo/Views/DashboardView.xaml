@@ -3,8 +3,18 @@
     <ScrollView>
         <StackLayout Padding="10">
             <Label Text="Welcome to Chibo!" FontSize="24" HorizontalTextAlignment="Center" />
+
+            <!-- Has Today -->
             <StackLayout IsVisible="{Binding HasToday}">
                 <Label Text="{Binding Today.DateLabel}" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Today.Recipes.Count, StringFormat='You have {0} meals planned today.'}" HorizontalTextAlignment="Center"></Label>
+                <ListView ItemsSource="{Binding Today.Recipes}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
             
             <!-- No Days -->

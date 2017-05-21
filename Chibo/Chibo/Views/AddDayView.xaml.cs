@@ -1,5 +1,5 @@
 ﻿using Chibo.Models;
-
+using Chibo.Services;
 using System;
 using System.Collections.Generic;
 
@@ -16,6 +16,11 @@ namespace Chibo.Views
         /// The day.
         /// </summary>
         public Day Day = new Day();
+
+        /// <summary>
+        /// Whether or not this is editing or adding
+        /// </summary>
+        public bool IsEditing = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Chibo.Views.AddDayView"/> class.
@@ -36,12 +41,33 @@ namespace Chibo.Views
             // if something went terribly wrong..
             if (day == null)
             {
-                DisplayAlert("Error!", "Day is null", "Damn.");
+                DisplayAlert("Error!", "Day is null!", "Ok");
                 return;
             }
                     
             Day = day;
             MealItems.ItemsSource = day.Recipes;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Chibo.Views.AddDayView"/> class.
+        /// </summary>
+        /// <param name="day"></param>
+        /// <param name="edit"></param>
+        public AddDayView(Day day, bool edit)
+        {
+            InitializeComponent();
+
+            // if something went terribly wrong..
+            if (day == null)
+            {
+                DisplayAlert("Error!", "Day is null!", "Ok");
+                return;
+            }
+
+            Day = day;
+            MealItems.ItemsSource = day.Recipes;
+            IsEditing = edit;
         }
 
         /// <summary>
@@ -51,7 +77,7 @@ namespace Chibo.Views
         /// <param name="e">E.</param>
         void AddMeal_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new AddMealView(Day));
+            Navigation.PushAsync(new AddMealView(Day, IsEditing));
         }
 
         /// <summary>
@@ -62,8 +88,36 @@ namespace Chibo.Views
         void AddDay_Clicked(object sender, System.EventArgs e)
         {
             Day.Date = DateInput.Date;
-            (Application.Current as App).Menu.AddDay(Day);
-            Navigation.PushAsync(new MenuView());
+
+            int index = 0;
+            int indexToEdit = 0;
+            // prevent adding two menus for one day
+            foreach(Day day in (Application.Current as App).Menu.Days)
+            {
+                if(day.Date == Day.Date)
+                {
+                    if(IsEditing)
+                    {
+                        indexToEdit = index;
+                    }
+                    else
+                    {
+                        DisplayAlert("Oops!", "You already have a menu for this day planned!", "Okay");
+                        return;
+                    }
+                }
+                index++;
+            }
+
+            // add the day to the global menu
+            if (!IsEditing)
+                (Application.Current as App).Menu.AddDay(Day);
+            else
+                (Application.Current as App).Menu.Days[indexToEdit] = Day;
+
+            // change the view
+            PageService.ChangeView(new MenuView(), "Menu");
+            Navigation.PopToRootAsync();
         }
     }
 }

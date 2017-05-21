@@ -10,6 +10,7 @@ using Chibo.Models;
 using Chibo.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 
 namespace Chibo.Views
 {
@@ -23,16 +24,29 @@ namespace Chibo.Views
         {
             InitializeComponent();
             BindingContext = new DashboardViewViewModel();
-
         }
     }
 
     class DashboardViewViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private Day today;
         public Menu Menu { get; set; } = new Menu("");
-        public Day Today { get; set; }
-        public bool IsNoDays { get => Menu.Days().Count() == 0; }
-        public bool HasToday { get; set; }
+        public Day Today {
+            get { return today; }
+            set
+            {
+                today = value;
+
+                if(PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Today"));
+                }
+            }
+        }
+        public bool IsNoDays { get => Menu.Days.Count() == 0; }
+        public bool HasToday { get => Today != null; }
 
 
         /// <summary>
@@ -46,12 +60,11 @@ namespace Chibo.Views
 
             Menu = (Application.Current as App).Menu;
 
-            foreach(Day day in Menu.Days())
+            foreach(Day day in Menu.Days)
             {
-                if(day.Date.Day == new DateTime().Day && day.Date.Month == new DateTime().Month)
+                if (day.Date.Day == DateTime.Now.Day && day.Date.Month == DateTime.Now.Month)
                 {
                     Today = day;
-                    HasToday = true;
                 }
             }
         }
@@ -70,10 +83,8 @@ namespace Chibo.Views
             PageService.ChangeView(new AddDayView(), "Add Day");
         }
 
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		//void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
+			//PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     }
 }

@@ -70,9 +70,9 @@ namespace Chibo.Models
             _days.Add(toAdd);
         }
 
-        public List<Day> Days()
+        public List<Day> Days
         {
-            return _days;
+            get { return _days; }
         }
 
         public void RemoveAt(int index)
