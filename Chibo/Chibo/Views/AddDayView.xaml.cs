@@ -11,11 +11,11 @@ namespace Chibo.Views
     /// The view for adding days
     /// </summary>
 	public partial class AddDayView : ContentPage
-	{
+    {
         /// <summary>
         /// The day.
         /// </summary>
-        public Day Day = new Day();
+        public Day Day = new Day() { Date = DateTime.Now };
 
         /// <summary>
         /// Whether or not this is editing or adding
@@ -68,6 +68,8 @@ namespace Chibo.Views
             Day = day;
             MealItems.ItemsSource = day.Recipes;
             IsEditing = edit;
+
+            DateInput.Date = day.Date;
         }
 
         /// <summary>
@@ -77,6 +79,7 @@ namespace Chibo.Views
         /// <param name="e">E.</param>
         void AddMeal_Clicked(object sender, System.EventArgs e)
         {
+            Day.Date = DateInput.Date;
             Navigation.PushAsync(new AddMealView(Day, IsEditing));
         }
 
