@@ -3,8 +3,15 @@
     <ScrollView>
         <StackLayout Padding="10">
             <Label Text="Welcome to Chibo!" FontSize="24" HorizontalTextAlignment="Center" />
-            <Label HorizontalTextAlignment="Center" Margin="0,5">In order to get started, you will need to add your first day.</Label>
-            <Button Text="Get Started" Margin="10,30" Command="{Binding GetStartedCommand}" />
+            <StackLayout IsVisible="{Binding HasToday}">
+                <Label Text="{Binding Today.DateLabel}" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            
+            <!-- No Days -->
+            <StackLayout IsVisible="{Binding IsNoDays}">
+                <Label HorizontalTextAlignment="Center" Margin="0,5">In order to get started, you will need to add your first day.</Label>
+                <Button Text="Get Started" Margin="10,30" Command="{Binding GetStartedCommand}" />
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

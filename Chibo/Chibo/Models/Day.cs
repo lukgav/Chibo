@@ -125,6 +125,6 @@ namespace Chibo.Models
         }
 
         public DateTime Date { get; set; }
-        public string DateLabel { get => Date.ToString();  }
+        public string DateLabel { get => String.Format("{0} {1}/{2}", Date.DayOfWeek.ToString(), Date.Day, Date.Month); }
     }
 }

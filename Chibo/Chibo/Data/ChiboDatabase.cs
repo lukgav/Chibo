@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Chibo;
 using Chibo.Models;
 using System.IO;
-using Android.Content.Res;
-using Android;
+//using Android.Content.Res;
+//using Android;
 
 namespace Chibo.Data
 {

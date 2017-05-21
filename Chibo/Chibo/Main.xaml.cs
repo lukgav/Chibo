@@ -28,6 +28,7 @@ namespace Chibo
 
 			// create a page for the corresponding menu item
             var page = (Page)Activator.CreateInstance(item.TargetType);
+
 			// use the page service to change views
 			PageService.ChangeView(page, item.Title);
 
