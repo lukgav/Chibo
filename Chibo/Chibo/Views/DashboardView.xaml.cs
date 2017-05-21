@@ -40,7 +40,15 @@ namespace Chibo.Views
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Day today;
+
+        /// <summary>
+        /// The menu that contains all the days
+        /// </summary>
         public Menu Menu { get; set; } = new Menu("");
+
+        /// <summary>
+        /// Today's recipes
+        /// </summary>
         public Day Today {
             get { return today; }
             set
@@ -53,9 +61,21 @@ namespace Chibo.Views
                 }
             }
         }
+
+        /// <summary>
+        /// Whether or not there is no days stored
+        /// </summary>
         public bool IsNoDays { get => Menu.Days.Count() == 0; }
+
+        /// <summary>
+        /// Whether or not there is data for today
+        /// </summary>
         public bool HasToday { get => Today != null; }
 
+        /// <summary>
+        /// Whether or not there are days stored
+        /// </summary>
+        public bool HasDays { get => Menu.Days.Count() != 0; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Chibo.Views.DashboardViewViewModel"/> class.
