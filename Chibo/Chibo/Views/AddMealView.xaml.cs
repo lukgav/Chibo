@@ -81,6 +81,9 @@ namespace Chibo.Views
         /// <param name="e">E.</param>
         void Handle_Clicked(object sender, System.EventArgs e)
         {
+            if (MealItems.SelectedItem == null)
+                return;
+
             Day.Recipes.Add((Recipe)MealItems.SelectedItem);
             Navigation.PushAsync(new AddDayView(Day, IsEditing));
         }
