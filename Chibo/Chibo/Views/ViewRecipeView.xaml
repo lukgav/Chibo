@@ -3,6 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chibo.Views.ViewRecipeView">
     <StackLayout Padding="10">
-        <Label x:Name="RecipeName" FontSize="24" HorizontalTextAlignment="Center" />
+        <Label x:Name="RecipeName" FontSize="24" HorizontalTextAlignment="Center" Margin="0,0,10,0" />
+        <Label FontAttributes="Bold"  Text="Instructions" />
+        <Label x:Name="InstructionsLabel" Margin="0,0,10,0"/>
+
+        <Label FontAttributes="Bold"  Text="Ingredients" />
+        <ListView x:Name="IngredientsList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Label}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>
