@@ -9,7 +9,7 @@
   <MasterDetailPage.Detail>
     <NavigationPage>
       <x:Arguments>
-        <pages:ShoppingListView />
+        <pages:WelcomeView />
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>

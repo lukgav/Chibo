@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chibo.Views.WelcomeView" Appearing="ContentPage_Appearing">
+    <StackLayout Padding="10">
+        <Label HorizontalTextAlignment="Center" FontSize="40">Welcome to Chibo.</Label>
+        <Label HorizontalTextAlignment="Center" FontSize="Default">One moment while we set up...</Label>
+    </StackLayout>
+</ContentPage>
