@@ -20,6 +20,9 @@ namespace Chibo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DashboardView : ContentPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Chibo.Views.DashboardView"/> class.
+        /// </summary>
         public DashboardView()
         {
             InitializeComponent();
@@ -27,8 +30,14 @@ namespace Chibo.Views
             RecipeList.SelectedItem = null;
         }
 
+        /// <summary>
+        /// Handles the viewing of recipes for today
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            // get the list that sent the event
             ListView list = (ListView)sender;
             Recipe recipe = (Recipe)list.SelectedItem;
             await Navigation.PushAsync(new ViewRecipeView(recipe)); // todo: fix deselecting
@@ -39,6 +48,9 @@ namespace Chibo.Views
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// If there is a day set for today, this contains it
+        /// </summary>
         private Day today;
 
         /// <summary>
@@ -55,6 +67,7 @@ namespace Chibo.Views
             {
                 today = value;
 
+                // mvvm property updating
                 if(PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("Today"));
@@ -82,10 +95,15 @@ namespace Chibo.Views
         /// </summary>
         public DashboardViewViewModel()
         {
-            if (Application.Current == null) return;
+            // sometimes the view can be shown before the app initialises, 
+            // this check makes sure that it doesn't try to access it
+            if (Application.Current == null)
+                return;
 
+            // get the global menu
             Menu = (Application.Current as App).Menu;
 
+            // find today (if it exists)
             foreach(Day day in Menu.Days)
             {
                 if (day.Date.Day == DateTime.Now.Day && day.Date.Month == DateTime.Now.Month)
@@ -109,9 +127,5 @@ namespace Chibo.Views
                 });
             }
         }
-
-		//void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
-			//PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
     }
 }
