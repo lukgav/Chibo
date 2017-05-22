@@ -90,6 +90,11 @@ namespace Chibo.Models
                 _isMassQuantityMeasured = value;
             }
         }
+        
+        public string Label
+        {
+            get => String.Format("{0}x {1}", Quantity == 0 ? 1 : Quantity, Name);
+        }
 
         public int ID
         {
