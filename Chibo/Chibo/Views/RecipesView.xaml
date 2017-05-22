@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Chibo.Views.RecipesView">
 	<ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="10">
+            <Label HorizontalTextAlignment="Center" x:Name="NoRecipesLabel">There are no stored recipes!</Label>
+            <ListView x:Name="RecipesList" ItemTapped="RecipesList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>
