@@ -20,6 +20,9 @@ namespace Chibo.Views
         /// </summary>
         public Day Day;
 
+        /// <summary>
+        /// Whether or not the day is being edited, used to pass between AddDay instances
+        /// </summary>
         public bool IsEditing;
 
         /// <summary>
@@ -33,9 +36,13 @@ namespace Chibo.Views
             Day = day;
 
             // todo: add call to get stored recipes
-			Recipes.Add(new Recipe() { Name = "Example One" });
-			Recipes.Add(new Recipe() { Name = "Example Two" });
-			Recipes.Add(new Recipe() { Name = "Another One" });
+            string[] testInstructions = new string[] { "Test", "Another Test", "This is a much longer instruction. Hopefully this will be able to test multiline support." };
+            Recipes.Add(new Recipe("Example One", testInstructions, new string[] { }));
+            Recipes.Add(new Recipe("Example Two", testInstructions, new string[] { }));
+            Recipes.Add(new Recipe("Another One", testInstructions, new string[] { }));
+            Recipes.Add(new Recipe("Lorum", testInstructions, new string[] { }));
+            Recipes.Add(new Recipe("Ipsum", testInstructions, new string[] { }));
+            Recipes[0].Ingredients.Add(new Ingredient("Apple", "This is an apple.", 420, 12));
 
             // assign recipes to list
             MealItems.ItemsSource = Recipes;
@@ -81,10 +88,14 @@ namespace Chibo.Views
         /// <param name="e">E.</param>
         void Handle_Clicked(object sender, System.EventArgs e)
         {
+            // prevent inserting null entries
             if (MealItems.SelectedItem == null)
                 return;
 
+            // add the recipe to the day
             Day.Recipes.Add((Recipe)MealItems.SelectedItem);
+
+            // go back to the add day view
             Navigation.PushAsync(new AddDayView(Day, IsEditing));
         }
     }
