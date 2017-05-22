@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Chibo.Views.ShoppingListView" Title="Shopping List">
-	<ContentPage.Content>
+    <ScrollView>
         <StackLayout Padding="10">
-            <Label>Shopping List</Label>
+            <Label HorizontalTextAlignment="Center" x:Name="ShoppingListCount">You have 0 items on your shopping list.</Label>
+            <ListView x:Name="ShoppingList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Label}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
-	</ContentPage.Content>
+    </ScrollView>
 </ContentPage>
