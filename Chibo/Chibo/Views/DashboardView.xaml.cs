@@ -82,8 +82,6 @@ namespace Chibo.Views
         /// </summary>
         public DashboardViewViewModel()
         {
-            GetStartedCommand = new Command(GetStarted);
-
             if (Application.Current == null) return;
 
             Menu = (Application.Current as App).Menu;
@@ -101,14 +99,15 @@ namespace Chibo.Views
 		/// Command used to change to the add day view
 		/// </summary>
 		/// <value>The get started command.</value>
-		Command GetStartedCommand { get; }
-
-        /// <summary>
-        /// Change the view to the add day view
-        /// </summary>
-		public void GetStarted()
+		public ICommand GetStartedCommand
         {
-            PageService.ChangeView(new AddDayView(), "Add Day");
+            get
+            {
+                return new Command((object obj) =>
+                {
+                    PageService.ChangeView(new MenuView(), "Menu");
+                });
+            }
         }
 
 		//void OnPropertyChanged([CallerMemberName]string propertyName = "") =>

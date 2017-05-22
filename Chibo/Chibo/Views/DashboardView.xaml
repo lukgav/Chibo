@@ -4,23 +4,28 @@
         <StackLayout Padding="10">
             <Label Text="Welcome to Chibo!" FontSize="24" HorizontalTextAlignment="Center" />
 
-            <!-- Has Today -->
-            <StackLayout IsVisible="{Binding HasToday}">
-                <Label Text="{Binding Today.DateLabel}" HorizontalTextAlignment="Center"/>
-                <Label Text="{Binding Today.Recipes.Count, StringFormat='You have {0} meals planned today.'}" HorizontalTextAlignment="Center"></Label>
-                <ListView ItemsSource="{Binding Today.Recipes, Mode=TwoWay}" ItemSelected="ListView_ItemSelected" x:Name="RecipeList">
+            <StackLayout>
+                <Label Text="{Binding Today.DateLabel}" HorizontalTextAlignment="Center" IsVisible="{Binding HasToday}"/>
+                <Label Text="{Binding Today.Recipes.Count, StringFormat='You have {0} meals planned today.'}" HorizontalTextAlignment="Center" IsVisible="{Binding HasToday}"></Label>
+                <ListView ItemsSource="{Binding Today.Recipes, Mode=TwoWay}" ItemSelected="ListView_ItemSelected" x:Name="RecipeList" IsVisible="{Binding HasToday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackLayout>
-            
-            <!-- No Days -->
-            <StackLayout IsVisible="{Binding IsNoDays}">
-                <Label HorizontalTextAlignment="Center" Margin="0,5">In order to get started, you will need to add your first day.</Label>
-                <Button Text="Get Started" Margin="10,30" Command="{Binding GetStartedCommand}" />
+
+                <Label Text="Your upcoming days on Chibo" HorizontalTextAlignment="Center" IsVisible="{Binding HasDays}"/>
+                <ListView ItemsSource="{Binding Menu.Days, Mode=TwoWay}" IsVisible="{Binding HasDays}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding DateLabel}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label HorizontalTextAlignment="Center" Margin="0,5"  IsVisible="{Binding IsNoDays}" Text="We're glad to see you! In order to get started, you will need to add your first day."/>
+                <Button Text="Get Started" Margin="10,30" Command="{Binding GetStartedCommand}"  IsVisible="{Binding IsNoDays}" />
             </StackLayout>
         </StackLayout>
     </ScrollView>
