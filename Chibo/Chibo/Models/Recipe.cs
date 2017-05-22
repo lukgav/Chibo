@@ -4,7 +4,7 @@ using SQLite;
 
 namespace Chibo.Models
 {
-    public class Recipe : IIdentifyable
+    public class Recipe : IIdentifyable, ICanSaveLoad<Recipe>
     {
     private static Random _RNG = new Random();
     
@@ -15,7 +15,9 @@ namespace Chibo.Models
 
         private string _name;
         private string[] _instruction;
-        private string[] _tag;
+        private string[] _tags;
+
+        private static List<Recipe> AllRecipes;
 
         public string Name
         {
@@ -47,16 +49,16 @@ namespace Chibo.Models
         /// Gets or sets an array of strings. These strings act as tags to say what type of recipe this is. 
         /// (e.g. lunch, dinner, brunch)
         /// </summary>
-        public string[] Tag
+        public string[] Tags
         {
             get
             {
-                return _tag;
+                return _tags;
             }
 
             set
             {
-                _tag = value;
+                _tags = value;
             }
         }
 
@@ -68,14 +70,18 @@ namespace Chibo.Models
             {
                 return _ingredients;
             }
-
         }
 
-        public int ID
+        public int ID //why is this here when it is in the IIdentifiable
         {
             get;
 
             set;
+        }
+
+        public Recipe()
+        {
+            //databases should be able to add to this list of databases
         }
 
         public Recipe(string name, string[] instruction, string[] tag)
@@ -86,12 +92,7 @@ namespace Chibo.Models
 
             _instruction = instruction;
 
-            _tag = tag;
-        }
-
-        public Recipe()
-        {
-            //paramater-less constructor, only to be used by the database object so it knows what table layout to reference.
+            _tags = tag;
         }
 
         public Recipe(Recipe toCopy)
@@ -119,19 +120,25 @@ namespace Chibo.Models
             tempStringArray = new List<string>();
 
             j = 0;
-            while (j < toCopy.Tag.Length)
+            while (j < toCopy.Tags.Length)
             {
-                tempStringArray.Add(new string(toCopy.Tag[j].ToCharArray()));
+                tempStringArray.Add(new string(toCopy.Tags[j].ToCharArray()));
 
                 j += 1;
             }
 
-            _tag = tempStringArray.ToArray();
+            _tags = tempStringArray.ToArray();
         }
 
         public static Recipe RandomRecipe(string[] tags, double likenessPercentage)
         {
-            Recipe[] toSelectFrom = new Recipe[] { };//false target, needs to be loaded from database
+            Recipe placeHolder = new Recipe("stew", new string[] { "peel potatos", "stew potatos" , "dinner"}, new string[] { "dinner", "lunch", "stew" });
+            Recipe FruityIceCream = new Recipe("fruity ice cream", new string[] { "fruit", "ice", "cream" }, new string[] { "dessert", "tasty", "fruit"});
+            Recipe FriedRice = new Recipe("fried rice", new string[] { "peas", "rice", "soy sauce"}, new string[] { "dinner", "lunch", "rice", "tasty"});
+            Recipe ImVegan = new Recipe("im vegan", new string[] { "bones", "blood", "contempt" }, new string[] { "healthy", "lunch"});
+
+            Recipe[] toSelectFrom = new Recipe[] {placeHolder, FruityIceCream, FriedRice, ImVegan };//false target, needs to be loaded from database
+
 
             if (likenessPercentage > 1.0)
             {
@@ -153,13 +160,12 @@ namespace Chibo.Models
                 return null;
             }
 
-            return validChoices[_RNG.Next(validChoices.Count)];
+            return validChoices[_RNG.Next(validChoices.Count)]; // could this Next also pick zero? Or does Next return floating point values
         }
 
         public void Add(Ingredient toAdd, float amount)
         {
             Ingredient toPass = new Ingredient(toAdd.Name, toAdd.Descrip, amount, toAdd.CaloriesPerGram);
-
             _ingredients.Add(toPass);
         }
 
@@ -170,26 +176,38 @@ namespace Chibo.Models
             _ingredients.Remove(toPass);
         }
 
-        public double FitsTags(string[] tags)
+        public bool HasTag(string inputTags)
         {
-            int found = 0;
-
-            foreach (string s in _tag)
+            foreach (string recipeTags in _tags)
             {
-                foreach (string si in tags)
+
+                if (inputTags == recipeTags)
                 {
-                    if (s == si)
-                    {
-                        found += 1;
-                        break;
-                    }
+                    return true;
                 }
             }
-
-            return Convert.ToDouble(found) / Convert.ToDouble(tags.Length);//percentage
+            return false;
         }
 
-        public bool SameID(IIdentifyable identified)
+        public double FitsTags(string[] tags)
+        {
+            //Console.WriteLine("Fit Tags");
+
+            int found = 0;
+
+
+            foreach (string s in tags)
+            {
+                if (HasTag(s))
+                {
+                    found += 1;
+                }
+            }
+            double likenessPercentage = Convert.ToDouble(found) / Convert.ToDouble(tags.Length);
+            return likenessPercentage;//percentage
+        }
+
+        bool IIdentifyable.SameID(IIdentifyable identified)
         {
             bool result = false;
 
@@ -200,8 +218,44 @@ namespace Chibo.Models
                     result = true;
                 }
             }
-
             return result;
+        }
+
+        bool ICanSaveLoad<Recipe>.Save(Recipe saveMe)
+        {
+            //save nput days
+            //if succesfully saved
+            //return myDB.saveRecipe(saveMe);
+            return false;
+        }
+
+        bool ICanSaveLoad<Recipe>.Save()
+        {
+            //return myDB.saveRecipe(this);
+            //if succesfully saved  
+            return false;
+        }
+
+        List<Recipe> ICanSaveLoad<Recipe>.LoadAll()
+        {
+            return new List<Recipe>();
+
+            //return database of Recipe into this LIst
+        }
+
+        Recipe ICanSaveLoad<Recipe>.Load(int requestedID)
+        {
+            Recipe loadedRecipe= new Recipe(); //uncomment the other code if needed. 
+
+            //loadedRecipe = myDB.getRecipe(requestedID);
+
+            if (loadedRecipe == null)
+            {
+                throw new Exception("Day Load Null Exception");
+            }
+            return loadedRecipe;
+            //return myDB.getDay(requestedID);
+            //return myDB.getRecipe(requestedID);
         }
     }
 }

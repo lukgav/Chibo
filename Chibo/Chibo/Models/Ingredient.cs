@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Chibo.Models
 {
-    public class Ingredient
+    public class Ingredient : IIdentifyable
     {
         [PrimaryKey, AutoIncrement]
         private int id { get; set; }
@@ -111,10 +111,11 @@ namespace Chibo.Models
 
         public Ingredient()
         {
+            //databases methods can be added to this
             //empty constructor 
         }
 
-        public bool SameID(IIdentifyable identified)
+        bool IIdentifyable.SameID(IIdentifyable identified)
         {
             bool result = false;
 
