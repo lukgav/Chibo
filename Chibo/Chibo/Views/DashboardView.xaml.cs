@@ -35,12 +35,14 @@ namespace Chibo.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void RecipeList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            // get the list that sent the event
-            ListView list = (ListView)sender;
-            Recipe recipe = (Recipe)list.SelectedItem;
-            await Navigation.PushAsync(new ViewRecipeView(recipe)); // todo: fix deselecting
+            // get the tapped item
+            Recipe selectedItem = (Recipe)(e.Item);
+            // set the selected item on the list to null so it dosen't prevent future selections
+            RecipeList.SelectedItem = null;
+            // change to the view recipe page
+            await Navigation.PushAsync(new ViewRecipeView(selectedItem));
         }
     }
 

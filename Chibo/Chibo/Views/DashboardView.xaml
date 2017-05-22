@@ -7,7 +7,7 @@
             <StackLayout>
                 <Label Text="{Binding Today.DateLabel}" HorizontalTextAlignment="Center" IsVisible="{Binding HasToday}"/>
                 <Label Text="{Binding Today.Recipes.Count, StringFormat='You have {0} meals planned today.'}" HorizontalTextAlignment="Center" IsVisible="{Binding HasToday}"></Label>
-                <ListView ItemsSource="{Binding Today.Recipes, Mode=TwoWay}" ItemSelected="ListView_ItemSelected" x:Name="RecipeList" IsVisible="{Binding HasToday}">
+                <ListView ItemsSource="{Binding Today.Recipes, Mode=TwoWay}" x:Name="RecipeList" IsVisible="{Binding HasToday}" ItemTapped="RecipeList_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}" />
