@@ -1,4 +1,5 @@
 ﻿using Chibo.Models;
+using Chibo.Data;
 using System;
 using System.Collections.Generic;
 
@@ -16,7 +17,7 @@ namespace Chibo.Views
         /// </summary>
         public RecipesView()
         {
-            InitializeComponent();
+            
 
             // get recipes
             // todo: replace with db
@@ -26,7 +27,7 @@ namespace Chibo.Views
             recipes.Add(new Recipe("Test Recipe", new string[] { "Do something", "something else" }, new string[] { "test" }));
 
             // assign the recipes list element with the recipes
-            RecipesList.ItemsSource = recipes;
+            RecipesList.ItemsSource = 
 
             // show/hide the 'You have no recipes' label
             NoRecipesLabel.IsVisible = recipes.Count == 0;

@@ -12,6 +12,8 @@ namespace Chibo
 {
     public partial class App : Application
     {
+        public static ChiboDatabase database;
+
         public App()
         {
             InitializeComponent();

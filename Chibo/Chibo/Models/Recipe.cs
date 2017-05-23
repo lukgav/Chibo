@@ -4,17 +4,22 @@ using SQLite;
 
 namespace Chibo.Models
 {
+    [Table("recipes")]
     public class Recipe : IIdentifyable
     {
-    private static Random _RNG = new Random();
-    
-    
-        [PrimaryKey, AutoIncrement]
-        private int id { get; set; }
+        private static Random _RNG = new Random();
+        
+        [Column("id")]
+        private int _id { get; set; }
         private ListIngredients _ingredients;
 
-        private string _name;
+        [Column("name")]
+        private string _name { get; set; }
+
         private string[] _instruction;
+
+        [Column("tags")]
+        private string _rawtags { get; set; }
         private string[] _tag;
 
         public string Name
@@ -87,6 +92,19 @@ namespace Chibo.Models
             _instruction = instruction;
 
             _tag = tag;
+        }
+
+        public Recipe(string name, string[] instruction, string[] tag, int id)
+        {
+            _ingredients = new ListIngredients();
+
+            _name = name;
+
+            _instruction = instruction;
+
+            _tag = tag;
+
+            _id = id;
         }
 
         public Recipe()

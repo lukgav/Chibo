@@ -13,7 +13,9 @@ namespace Chibo.Data
 {
     public class ChiboDatabase
     {
-        readonly SQLiteAsyncConnection database;
+        public SQLiteAsyncConnection database;
+
+        private SQLiteConnection db_sync;
         
 
         public ChiboDatabase(string dbpath)
@@ -35,9 +37,11 @@ namespace Chibo.Data
             //see if database exists, if not copy it over from RAW.
 
             Debug.WriteLine(dbpath);
+
+            db_sync = new SQLiteConnection(dbpath);
             
 
-            database = new SQLiteAsyncConnection(dbpath);
+            //database = new SQLiteAsyncConnection(dbpath);
             //database.CreateTableAsync<>
 
             Debug.WriteLine(database.ToString());
@@ -84,6 +88,30 @@ namespace Chibo.Data
 
             //TODO: add database SQL code.
             return null;
+        }
+
+        protected class RecipeVal
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+            public string tags { get; set; }
+            public string instr { get; set; }
+        }
+
+        public List<Recipe> GetRecipes()
+        {
+            IEnumerable<RecipeVal> temp_enum = db_sync.Query<RecipeVal>("select id, name, instructions, tags FROM recipes", ""_);
+
+            List<Recipe> temp_rec = new List<Recipe>();
+            foreach (RecipeVal t in temp_enum)
+            {
+                string[] tags = t.tags.Split(';');
+                string[] instr = t.instr.Split('~');
+                temp_rec.Add(new Recipe(t.name, instr, tags, t.id));
+
+            }
+            return temp_rec;
+            
         }
 
         
