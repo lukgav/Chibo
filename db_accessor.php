@@ -98,6 +98,15 @@ EOF;
         return parent::query($sql);
     }
 
+    function selectFirstUnlinkedRecipe()
+    {
+        //returns the first recipe that has no ingredients linked
+        $sql = <<<EOF
+SELECT recipes.id AS 'recipe id', recipes.name as 'recipe name' FROM recipes WHERE id NOT EXISTS(SELECT 1 FROM ingredientInRecipe WHERE ingredientInRecipe.recipeID=recipes.id);
+EOF;
+
+    }
+
 
     /**
      * "adders"
@@ -164,6 +173,8 @@ EOF;
 
         }
     }
+
+
 
     function DeleteRecipe($idToDelete)
     {

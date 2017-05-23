@@ -47,8 +47,9 @@ if ($rows == 0) {
         echo '<td class="tg-yw4l">' . $row['recipe id'] . "</td>";
         echo '<td class="tg-yw4l">' . $row['recipe name'] . "</td>";
         echo '<td class="tg-yw4l">' .  $row['recipe tags'] . "</td>";
-        echo '<td class="tg-yw4l">' .  $row['recipe instructions'] . "</td>";
+        echo '<td class="tg-yw4l">' .  $row['recipe instructions'] . "</td></tr>";
     }
+echo "</table>";
 }
 $db->close();
 ?>
