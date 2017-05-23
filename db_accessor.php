@@ -102,8 +102,9 @@ EOF;
     {
         //returns the first recipe that has no ingredients linked
         $sql = <<<EOF
-SELECT recipes.id AS 'recipe id', recipes.name as 'recipe name' FROM recipes WHERE id NOT EXISTS(SELECT 1 FROM ingredientInRecipe WHERE ingredientInRecipe.recipeID=recipes.id);
+SELECT recipes.id AS 'recipe id', recipes.name as 'recipe name' FROM recipes WHERE NOT EXISTS(SELECT 1 FROM ingredientInRecipe WHERE ingredientInRecipe.recipeID=recipes.id) LIMIT 1;
 EOF;
+        return parent::query($sql);
 
     }
 
@@ -129,6 +130,22 @@ EOF;
 INSERT INTO ingredients (name, description) VALUES ('$name', '$description');
 EOF;
         return parent::query($sql);
+    }
+
+    function AddLinks ($linkArray, $recipeID)
+    {
+
+        //creates links somehow.
+        foreach ($linkArray as $link) {
+            //broken apart
+            $ingS = $link['ing'];
+            $qtyS = $link['qty'];
+            $modS = $link['mod'];
+            $sql = <<<EOF
+INSERT INTO ingredientInRecipe (recipeID, ingredientID, qty, qtyType) VALUES ('$recipeID', '$ingS', '$qtyS', '$modS');
+EOF;
+            parent::query($sql);
+        }
     }
 
     /**
