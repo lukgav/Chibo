@@ -8,7 +8,7 @@
         <Label x:Name="InstructionsLabel" Margin="0,0,10,0"/>
 
         <Label FontAttributes="Bold"  Text="Ingredients" />
-        <ListView x:Name="IngredientsList">
+        <ListView x:Name="IngredientsList" ItemTapped="IngredientsList_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Label}" />

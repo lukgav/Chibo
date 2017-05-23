@@ -33,6 +33,7 @@ namespace Chibo.Views
 
             // set the name label
             RecipeName.Text = recipe.Name;
+            Title = String.Format("Recipe ({0})", recipe.Name);
 
             // iterate through the instructions, generating an ordered list
             int i = 0;
@@ -44,6 +45,18 @@ namespace Chibo.Views
 
             // assign the ingredients list the recipe's ingredients
             IngredientsList.ItemsSource = recipe.Ingredients.Ingredients;
+        }
+
+        private async void IngredientsList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            // get the tapped ingredient
+            Ingredient ingredient = (Ingredient)(e.Item);
+
+            // set the selected item on the list to null so it dosen't prevent future selections
+            IngredientsList.SelectedItem = null;
+
+            // change to the view recipe page
+            await Navigation.PushAsync(new ViewIngredientView(ingredient));
         }
     }
 }
