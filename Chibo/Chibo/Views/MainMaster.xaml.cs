@@ -37,7 +37,7 @@ namespace Chibo.Views
                     new MainMenuItem { Id = 1, Title = "Menu", TargetType = typeof(MenuView) },
                     new MainMenuItem { Id = 2, Title = "Recipes", TargetType = typeof(RecipesView) },
                     new MainMenuItem { Id = 3, Title = "Shopping List", TargetType = typeof(ShoppingListView) },
-					new MainMenuItem { Id = 4, Title = "Debug", TargetType = typeof(DebugView) }
+					//new MainMenuItem { Id = 4, Title = "Debug", TargetType = typeof(DebugView) }
                 });
             }
             public event PropertyChangedEventHandler PropertyChanged;

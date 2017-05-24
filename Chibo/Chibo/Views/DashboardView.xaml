@@ -15,6 +15,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
+                <!--                
                 <Label Text="Your upcoming days on Chibo" HorizontalTextAlignment="Center" IsVisible="{Binding HasDays}"/>
                 <ListView ItemsSource="{Binding Menu.Days, Mode=TwoWay}" IsVisible="{Binding HasDays}">
                     <ListView.ItemTemplate>
@@ -23,6 +24,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                -->
 
                 <Label HorizontalTextAlignment="Center" Margin="0,5"  IsVisible="{Binding IsNoDays}" Text="We're glad to see you! In order to get started, you will need to add your first day."/>
                 <Button Text="Get Started" Margin="10,30" Command="{Binding GetStartedCommand}"  IsVisible="{Binding IsNoDays}" />

@@ -35,14 +35,8 @@ namespace Chibo.Views
             // setup the day
             Day = day;
 
-            // todo: add call to get stored recipes
-            string[] testInstructions = new string[] { "Test", "Another Test", "This is a much longer instruction. Hopefully this will be able to test multiline support." };
-            Recipes.Add(new Recipe("Example One", testInstructions, new string[] { }));
-            Recipes.Add(new Recipe("Example Two", testInstructions, new string[] { }));
-            Recipes.Add(new Recipe("Another One", testInstructions, new string[] { }));
-            Recipes.Add(new Recipe("Lorum", testInstructions, new string[] { }));
-            Recipes.Add(new Recipe("Ipsum", testInstructions, new string[] { }));
-            Recipes[0].Ingredients.Add(new Ingredient("Apple", "This is an apple.", 420, 12));
+
+            Recipes = (Application.Current as App).Recipes;
 
             // assign recipes to list
             MealItems.ItemsSource = Recipes;

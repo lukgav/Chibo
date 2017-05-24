@@ -18,12 +18,8 @@ namespace Chibo.Views
         {
             InitializeComponent();
 
-            // get recipes
-            // todo: replace with db
-            List<Recipe> recipes = new List<Recipe>();
-
-            // todo: remove this 
-            recipes.Add(new Recipe("Test Recipe", new string[] { "Do something", "something else" }, new string[] { "test" }));
+            // get the recipes
+            List<Recipe> recipes = (Application.Current as App).Recipes;
 
             // assign the recipes list element with the recipes
             RecipesList.ItemsSource = recipes;
